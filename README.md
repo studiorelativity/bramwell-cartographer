@@ -95,17 +95,18 @@ disclosed. In order:
    under dedup — so the check failed closed but pointed at the wrong
    cause. Fixed in the scanner; the near-miss is why the count is
    audited, not just the failures.
-2. **The map called a live file dead.** `content.config.ts` had zero
-   inbound edges — Astro loads it by convention, not import — and the
-   adjudicator, refusing to assert without evidence, badged it
-   leftover. The fix went to the evidence layer (contract-based
-   liveness, `reference/card-contract.md`), not to the rule. The wrong
-   verdict is preserved in `_rig/_archive/`.
+2. **The map called live files dead.** Three files with zero inbound
+   edges — `astro.config.mjs`, `package.json`, and the contact function
+   — were badged leftover: the toolchain and the platform consume them
+   by name, not by import, and the adjudicator, refusing to assert
+   without evidence, called them dead. The fix went to the evidence
+   layer (contract-based liveness, `reference/card-contract.md`), not
+   to the rule. The wrong verdicts are preserved in
+   `_rig/_archive/2026-08-19_211434/`.
 3. **Two citations resolved but misled** — the failure quoted above.
    Every mechanical check passed; the verifier failed the map. One
    instruction changed; no card was hand-edited; the re-run shows
    untouched stages were not re-paid.
-   the re-run shows untouched stages were not re-paid.
 4. **A cold reader invented an enum.** Asked the schema question, the
    small model fused a real token from the adjacent collection with a
    plausible partner into values that do not exist. The transcript
@@ -114,8 +115,8 @@ disclosed. In order:
 5. **One real defect escaped everything:** an image referenced from
    markdown frontmatter — outside every evidence class — was missing
    from the territory. A human caught it from the map's own file
-   inventory. That boundary is now stated wherever this map makes a
-   claim.
+   inventory, and the territory was made whole. That boundary is now
+   stated wherever this map makes a claim.
 
 A map is trustworthy in proportion to what its process catches and what
 its process admits. This is the full list.
