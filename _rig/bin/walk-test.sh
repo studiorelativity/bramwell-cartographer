@@ -21,7 +21,7 @@ mkdir -p "$ROOM"
 cp "$CARDS_SRC/catalog.md" "$ROOM/"
 cp -R "$CARDS_SRC/cards" "$ROOM/cards"
 
-WALK_MODEL="claude-haiku-4-5"   # or claude-sonnet-5 
+WALK_MODEL="claude-sonnet-5"   # or claude-haiku-4-5
 
 PROMPT_RULES="You are a developer new to this codebase. You have never seen it. In this directory you have catalog.md and a cards/ folder. Read catalog.md first, then open AT MOST ONE card — the one the catalog points you to. Answer from that card only, in 3 sentences or fewer. If the card cannot answer the question, say what it cannot tell you instead of guessing. End by naming which card you read. Question:"
 

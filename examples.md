@@ -15,12 +15,11 @@ The catalog's door for the token source reads in the reader's terms —
 every color and typeface resolves there — and routes to one card. A cold
 reader (no memory, able to see only the catalog and cards) answered:
 
-> All colors and typefaces are defined as CSS custom properties in a
-> single `:root` token block, with fonts loaded via `@font-face` from
-> `public/fonts/`; every other file references these tokens rather than
-> hardcoding values. To change the accent color, you'd edit the accent
-> token declared at `src/styles/global.css:72`.
-> Card read: `cards/global-styles.md`
+> All colors, typefaces, and spacing come from `src/styles/global.css`,
+> loaded site-wide via `src/layouts/Base.astro`; it's the one file allowed
+> to use hex literals, with the pumpkin accent color defined at
+> `src/styles/global.css:72` inside the `:root` token block — that's the
+> file to edit. Card read: **cards/global-styles.md**.
 
 One door, one card, a cited line, stop.
 
@@ -28,12 +27,16 @@ One door, one card, a cited line, stop.
 
 **Q: If I change the base layout, what else on the site is affected?**
 
-> Every page in `src/pages/` (index, about, contact, contact/error,
-> contact/sent, how-it-works, privacy, work/index, work/[...slug],
-> writing/index, writing/[...slug]) wraps itself in this layout, so all
-> their nav, footer, and head/meta tags would change too. […]
-> `rss.xml.js` is explicitly not affected — it emits a feed, not a
-> document, and has no edge to this layout.
+> Changing `Base.astro` ripples to every page that wraps in it — all
+> eleven listed pages/routes (home, about, contact + its error/sent
+> subpages, how-it-works, privacy, work index and its dynamic slug pages,
+> writing index and its dynamic slug pages) — since it's where the nav,
+> footer, title, meta description, and stylesheet all resolve. It
+> explicitly does *not* affect `rss.xml.js` (no document shell) or mount
+> `ContactForm.astro` directly (that's page-level). The card can't tell
+> you why the chrome is inlined here rather than composed per page —
+> that's not recoverable from source.
+>
 > Card read: `cards/base-layout.md`
 
 Note the last sentence: the reader relayed a **Does not hit** — the
@@ -50,12 +53,13 @@ This question aims past the map's evidence classes on purpose: the photo
 is referenced from markdown frontmatter, which the scanner does not
 parse. The reader:
 
-> This card defines the `people` schema and confirms
-> `src/pages/about.astro` reads that collection, but it doesn't show
-> the `people` schema's fields or which entry file/frontmatter key
-> holds Tony's photo — so it can't tell you the actual filename or
-> field to fix, or whether the photo path itself is correct.
-> Card read: `cards/content-config.md`
+> This card defines the `people` collection's schema
+> (src/content.config.ts) and confirms about.astro reads content through
+> it, but it doesn't show the schema's actual fields or which one is a
+> photo/image field — so it can't tell me whether the schema even has a
+> photo field, or where Tony's specific entry file/photo asset lives.
+>
+> Card read: **content-config.md**
 
 The map's most important behaviour is on that tape: at its boundary it
 says what it cannot tell you and stops, instead of inventing a
