@@ -101,10 +101,10 @@ disclosed. In order:
    leftover. The fix went to the evidence layer (contract-based
    liveness, `reference/card-contract.md`), not to the rule. The wrong
    verdict is preserved in `_rig/_archive/`.
-3. **Two citations resolved but misled** — pointing one and two lines
-   from the content they claimed. Every mechanical check passed; the
-   verifier failed the map (`_rig/log/run-report.md`, run
-   2026-08-19_221513). One instruction changed; no card was hand-edited;
+3. **Two citations resolved but misled** — the failure quoted above.
+   Every mechanical check passed; the verifier failed the map. One
+   instruction changed; no card was hand-edited; the re-run shows
+   untouched stages were not re-paid.
    the re-run shows untouched stages were not re-paid.
 4. **A cold reader invented an enum.** Asked the schema question, the
    small model fused a real token from the adjacent collection with a
