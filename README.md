@@ -59,7 +59,7 @@ can you re-run the check? Here, concretely:
 ## The verifier catching what resolution cannot
 
 The strongest evidence in this repo is a failure. Run
-`2026-08-19_221513`, verbatim from `\_rig/log/run-report.md`:
+`2026-08-19_221513`, verbatim from `_rig/log/run-report.md`:
 
 > 03_verify FAIL — All 150 citations resolve, every Hits line matches an
 > edge in edges.json and every Does-not-hit absence holds, and no card
@@ -88,11 +88,14 @@ showing untouched stages were not re-paid — is in `_rig/log/`.
 
 `receipts/` holds unedited transcripts of cold sessions — no memory, no
 project context, physically able to read only the catalog and cards —
-answering a new developer's questions. Both a frontier and a small model
-were tested; both answered from one card each; both declined to guess
-past what the cards hold. The small model succeeding matters: the map
-did the intelligence work at build time so the reader does not need it
-at read time.
+answering a new developer's questions. Both a frontier and a small
+model walked the same map — one card per question, transcripts
+unedited. The frontier model reported the cards' boundaries (what a
+card doesn't hold). The small model overstated once, reconstructing
+enum values the card does not contain — and the card's citation to the
+schema's exact lines is what makes that overstatement checkable in
+seconds. That is the argument of this repo in one transcript: confident
+answers are cheap; citable ones are catchable.
 
 One transcript to look at first: asked about a broken image the map
 cannot see (the territory references it from markdown frontmatter, which

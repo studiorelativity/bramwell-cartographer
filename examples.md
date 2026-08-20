@@ -39,10 +39,10 @@ One door, one card, a cited line, stop.
 >
 > Card read: `cards/base-layout.md`
 
-Note the last sentence: the reader relayed a **Does not hit** — the
-obvious wrong neighbour, denied with its reason. That absence is not the
-card author's recollection; it was checked against the extracted edge
-list before the map passed verification.
+Note the rss.xml.js sentence: the reader relayed a **Does not hit** —
+the obvious wrong neighbour, denied with its reason. That absence is
+not the card author's recollection; it was checked against the
+extracted edge list before the map passed verification.
 
 ## Walk 3 — the boundary, answered honestly
 
@@ -81,7 +81,8 @@ failed the map anyway:
 A citation one line off resolves fine and misleads. The fix went to the
 card writer's instructions (read the line, then write the citation), no
 card was hand-edited, and the re-run passed with the corrected lines —
-which then appeared, correct, in the cold reader's Walk answers above
-(`:20` for the status constraint, `:21` for the ordering). Defect →
-instruction fix → verified card → correct stranger's answer, end to
-end, all of it in `_rig/log/` and `receipts/`.
+which then appeared, correct, in the cold reader's transcripts in
+receipts/ (sonnet-q2) (`:20` for the status constraint, `:21` for the
+ordering). Defect → instruction fix → verified card → correct
+stranger's answer, end to end, all of it in `_rig/log/` and
+`receipts/`.
