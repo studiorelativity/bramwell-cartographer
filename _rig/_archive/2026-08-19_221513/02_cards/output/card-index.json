@@ -1,0 +1,96 @@
+{
+  "territory_commit": "86aa09a",
+  "catalog": "catalog.md",
+  "cards": [
+    {
+      "noun": "Global Stylesheet",
+      "slug": "global-stylesheet",
+      "path": "src/styles/global.css",
+      "status": "live",
+      "file": "cards/global-stylesheet.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Base Layout",
+      "slug": "base-layout",
+      "path": "src/layouts/Base.astro",
+      "status": "live",
+      "file": "cards/base-layout.md",
+      "hits": 11,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Nav",
+      "slug": "nav",
+      "path": "src/components/Nav.astro",
+      "status": "live",
+      "file": "cards/nav.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Footer",
+      "slug": "footer",
+      "path": "src/components/Footer.astro",
+      "status": "live",
+      "file": "cards/footer.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Contact Form",
+      "slug": "contact-form",
+      "path": "src/components/ContactForm.astro",
+      "status": "live",
+      "file": "cards/contact-form.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Rig Demo",
+      "slug": "rig-demo",
+      "path": "src/components/RigDemo.astro",
+      "status": "live",
+      "file": "cards/rig-demo.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Content Collections Schema",
+      "slug": "content-collections-schema",
+      "path": "src/content.config.ts",
+      "status": "live",
+      "file": "cards/content-collections-schema.md",
+      "hits": 6,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Astro Config",
+      "slug": "astro-config",
+      "path": "astro.config.mjs",
+      "status": "live",
+      "file": "cards/astro-config.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Contact API Function",
+      "slug": "contact-api-function",
+      "path": "functions/api/contact.js",
+      "status": "live",
+      "file": "cards/contact-api-function.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Self-hosted Web Fonts",
+      "slug": "self-hosted-web-fonts",
+      "path": "public/fonts/archivo-800.woff2",
+      "status": "live",
+      "file": "cards/self-hosted-web-fonts.md",
+      "hits": 2,
+      "does_not_hit": 2
+    }
+  ]
+}

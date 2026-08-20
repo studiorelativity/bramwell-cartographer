@@ -1,0 +1,4 @@
+{
+  "required_keys": ["territory_commit", "edge_list", "catalog_path", "card_index", "cards_dir", "card_count"],
+  "path_keys": ["card_index", "edge_list"]
+}

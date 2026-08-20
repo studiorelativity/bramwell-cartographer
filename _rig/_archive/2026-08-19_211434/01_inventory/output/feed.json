@@ -1,0 +1,116 @@
+{
+  "territory_commit": "dcba75e",
+  "file_list": "01_inventory/output/raw/files.json",
+  "edge_list": "01_inventory/output/raw/edges.json",
+  "leftovers_found": 21,
+  "ghosts_found": 0,
+  "nouns": [
+    {
+      "noun": "Base layout",
+      "slug": "base-layout",
+      "path": "src/layouts/Base.astro",
+      "class": "layout-spine",
+      "status": "live",
+      "inbound_edges": 11,
+      "why_selected": "Highest inbound-edge count in the territory (11, from every page plus Nav.astro and Footer.astro), making it the layout spine every route passes through."
+    },
+    {
+      "noun": "Global stylesheet",
+      "slug": "global-stylesheet",
+      "path": "src/styles/global.css",
+      "class": "token-style",
+      "status": "live",
+      "inbound_edges": 1,
+      "why_selected": "Only one inbound edge (from Base.astro) but the sole stylesheet in the territory, with 8 outbound edges to every font in public/fonts/, making it the token/style source everything visual hangs off of."
+    },
+    {
+      "noun": "Content collections config",
+      "slug": "content-collections-config",
+      "path": "src/content.config.ts",
+      "class": "content-collection",
+      "status": "live",
+      "inbound_edges": 6,
+      "why_selected": "Six inbound edges (about.astro, rss.xml.js, and all four work/writing route files) make it the most-referenced non-layout file and the schema noun standing in for all three content collections it defines."
+    },
+    {
+      "noun": "Rig demo component",
+      "slug": "rig-demo",
+      "path": "src/components/RigDemo.astro",
+      "class": "component",
+      "status": "live",
+      "inbound_edges": 1,
+      "why_selected": "One inbound edge from index.astro, but at 552 lines it is the largest and most complex component in the territory, worth a card despite tying the other components on raw edge count."
+    },
+    {
+      "noun": "Contact form component",
+      "slug": "contact-form",
+      "path": "src/components/ContactForm.astro",
+      "class": "component",
+      "status": "live",
+      "inbound_edges": 1,
+      "why_selected": "Imported once by contact.astro but pairs with the contact submission flow in functions/api/contact.js, so a developer touching either needs the other explained."
+    },
+    {
+      "noun": "Astro config",
+      "slug": "astro-config",
+      "path": "astro.config.mjs",
+      "class": "site-config",
+      "status": "leftover",
+      "inbound_edges": 0,
+      "why_selected": "Zero inbound edges in edges.json; this fitting has no read access to the file's own lines to cite a build-tool convention, so per the adjudication rule the honest status is leftover rather than an assumed live, and it is nominated so the map states that plainly instead of hiding it."
+    },
+    {
+      "noun": "Contact serverless function",
+      "slug": "contact-function",
+      "path": "functions/api/contact.js",
+      "class": "serverless-function",
+      "status": "leftover",
+      "inbound_edges": 0,
+      "why_selected": "Zero inbound edges — nothing in the scanned import/link graph resolves to it, including from ContactForm.astro, whose call is presumably a runtime fetch the static scan cannot follow — so it is nominated as the territory's one serverless-function noun with an honest leftover status rather than an inferred one."
+    },
+    {
+      "noun": "Site nav",
+      "slug": "site-nav",
+      "path": "src/components/Nav.astro",
+      "class": "component",
+      "status": "live",
+      "inbound_edges": 1,
+      "why_selected": "One inbound edge from Base.astro, through which it reaches every page in the territory, making it load-bearing site chrome despite the low raw edge count."
+    },
+    {
+      "noun": "Site footer",
+      "slug": "site-footer",
+      "path": "src/components/Footer.astro",
+      "class": "component",
+      "status": "live",
+      "inbound_edges": 1,
+      "why_selected": "One inbound edge from Base.astro, the mirror of Nav.astro in the same layout-spine wiring, included so the site-chrome pair is not half-mapped."
+    },
+    {
+      "noun": "Package manifest",
+      "slug": "package-manifest",
+      "path": "package.json",
+      "class": "site-config",
+      "status": "leftover",
+      "inbound_edges": 0,
+      "why_selected": "Zero inbound edges, the same evidentiary gap as astro.config.mjs — no citable line establishes the npm/build-tool convention from the scan output alone, so it is nominated as the territory's other site-config noun with an honest leftover status."
+    }
+  ],
+  "collisions": [
+    {
+      "word": "config",
+      "meanings": [
+        "astro.config.mjs — site/build configuration",
+        "src/content.config.ts — content collection schema definitions"
+      ]
+    },
+    {
+      "word": "contact",
+      "meanings": [
+        "src/pages/contact.astro — the contact page route",
+        "src/components/ContactForm.astro — the contact form UI component",
+        "functions/api/contact.js — the contact form submission handler"
+      ]
+    }
+  ]
+}

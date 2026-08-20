@@ -1,0 +1,47 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+<Base
+  title="Writing"
+  description="Notes on staged pipelines, gates, verdicts, and what it takes to run AI unattended."
+>
+  <section class="nf-section">
+    <div class="nf-content">
+      <h1>Writing</h1>
+      <p>
+        Notes from building and running staged AI pipelines: how the stages are cut,
+        what a gate asserts, what a verdict is allowed to say, and what breaks when a
+        run is left unattended. Mechanism, not opinion — if a claim here has evidence
+        behind it, the evidence is named.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Posts</h2>
+      <ul class="nf-list">
+        {posts.map((post) => (
+          <li class="nf-card">
+            <h3><a href={`/writing/${post.id}/`}>{post.data.title}</a></h3>
+            <p>{post.data.description}</p>
+            <p class="nf-meta">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Feed</h2>
+      <p>Every post is in the feed as it publishes.</p>
+      <a class="nf-link" href="/rss.xml">RSS</a>
+    </div>
+  </section>
+</Base>

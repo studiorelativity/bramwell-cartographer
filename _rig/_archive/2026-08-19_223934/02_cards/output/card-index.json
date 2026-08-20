@@ -1,0 +1,96 @@
+{
+  "territory_commit": "16a4fc4",
+  "catalog": "catalog.md",
+  "cards": [
+    {
+      "noun": "Base layout",
+      "slug": "base-layout",
+      "path": "src/layouts/Base.astro",
+      "status": "live",
+      "file": "cards/base-layout.md",
+      "hits": 11,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Global styles",
+      "slug": "global-styles",
+      "path": "src/styles/global.css",
+      "status": "live",
+      "file": "cards/global-styles.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Nav",
+      "slug": "nav",
+      "path": "src/components/Nav.astro",
+      "status": "live",
+      "file": "cards/nav.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Footer",
+      "slug": "footer",
+      "path": "src/components/Footer.astro",
+      "status": "live",
+      "file": "cards/footer.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "ContactForm",
+      "slug": "contact-form",
+      "path": "src/components/ContactForm.astro",
+      "status": "live",
+      "file": "cards/contact-form.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "RigDemo",
+      "slug": "rig-demo",
+      "path": "src/components/RigDemo.astro",
+      "status": "live",
+      "file": "cards/rig-demo.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Content collections config",
+      "slug": "content-config",
+      "path": "src/content.config.ts",
+      "status": "live",
+      "file": "cards/content-config.md",
+      "hits": 6,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Astro config",
+      "slug": "astro-config",
+      "path": "astro.config.mjs",
+      "status": "live",
+      "file": "cards/astro-config.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "package.json",
+      "slug": "package-json",
+      "path": "package.json",
+      "status": "live",
+      "file": "cards/package-json.md",
+      "hits": 1,
+      "does_not_hit": 2
+    },
+    {
+      "noun": "Contact function",
+      "slug": "contact-function",
+      "path": "functions/api/contact.js",
+      "status": "live",
+      "file": "cards/contact-function.md",
+      "hits": 1,
+      "does_not_hit": 2
+    }
+  ]
+}

@@ -1,0 +1,846 @@
+{
+	"expected_commit": "16a4fc4",
+	"quote_cap_lines": 5,
+	"cards_dir": "/Users/admin/_git/sandbox/jidoka/_rig/02_cards/output/cards",
+	"territory": "/Users/admin/_git/sandbox/jidoka/_territory",
+	"citations": [
+		{
+			"card": "astro-config.md",
+			"citation": "astro.config.mjs:4@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "astro-config.md",
+			"citation": "astro.config.mjs:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "astro-config.md",
+			"citation": "astro.config.mjs:6@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "astro-config.md",
+			"citation": "astro.config.mjs:7@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "astro-config.md",
+			"citation": "package.json:14@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "astro-config.md",
+			"citation": "src/layouts/Base.astro:20@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:10@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:11@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:18@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:19@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:20@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:22@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:30@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:32@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:34@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/layouts/Base.astro:4@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/about.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/contact.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/contact/error.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/contact/sent.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/how-it-works.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/index.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/privacy.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/work/[...slug].astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/work/index.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/writing/[...slug].astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/pages/writing/index.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "base-layout.md",
+			"citation": "src/styles/global.css:148@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:104@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:183@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:185@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:205@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:228@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:232@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:258@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:35@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:44@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:57@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:81@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:82@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:89@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/components/ContactForm.astro:9@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-form.md",
+			"citation": "src/pages/contact.astro:3@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:109@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:11@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:12@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:146@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:148@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:161@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:174@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:190@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:19@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "contact-function.md",
+			"citation": "functions/api/contact.js:30@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:11@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:15@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:16@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:20@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:21@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:29@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:30@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:42@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:4@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/content.config.ts:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/pages/about.astro:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/pages/rss.xml.js:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/pages/work/[...slug].astro:6@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/pages/work/index.astro:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/pages/writing/[...slug].astro:6@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "content-config.md",
+			"citation": "src/pages/writing/index.astro:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/components/Footer.astro:15@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/components/Footer.astro:19@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/components/Footer.astro:30@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/components/Footer.astro:4@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/components/Footer.astro:6@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/components/Footer.astro:8@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/components/Nav.astro:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/layouts/Base.astro:3@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "footer.md",
+			"citation": "src/styles/global.css:315@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/components/RigDemo.astro:279@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/layouts/Base.astro:21@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/layouts/Base.astro:4@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:109@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:1@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:209@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:247@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:283@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:288@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:63@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:65@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:6@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:72@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:76@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:82@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:8@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "global-styles.md",
+			"citation": "src/styles/global.css:98@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/components/Footer.astro:8@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/components/Nav.astro:14@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/components/Nav.astro:17@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/components/Nav.astro:23@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/components/Nav.astro:25@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/components/Nav.astro:4@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/components/Nav.astro:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/layouts/Base.astro:2@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "nav.md",
+			"citation": "src/styles/global.css:209@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "astro.config.mjs:7@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:12@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:13@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:14@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:3@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:5@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:6@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:7@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:8@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "package-json.md",
+			"citation": "package.json:9@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:10@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:11@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:14@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:155@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:15@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:16@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:279@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:339@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:342@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:381@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:3@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:510@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:550@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/components/RigDemo.astro:67@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		},
+		{
+			"card": "rig-demo.md",
+			"citation": "src/pages/index.astro:3@16a4fc4",
+			"resolved": true,
+			"reason": "resolved"
+		}
+	],
+	"cards": [
+		{
+			"card": "astro-config.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "base-layout.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "contact-form.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "contact-function.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "content-config.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "footer.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "global-styles.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "nav.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "package-json.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		},
+		{
+			"card": "rig-demo.md",
+			"quoted_lines": 0,
+			"over_cap": false
+		}
+	],
+	"totals": {
+		"citations": 130,
+		"unresolved": 0,
+		"cards": 10,
+		"cards_over_cap": 0
+	}
+}

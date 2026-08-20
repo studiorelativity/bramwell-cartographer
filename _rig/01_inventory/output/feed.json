@@ -1,0 +1,135 @@
+{
+  "territory_commit": "16a4fc4",
+  "file_list": "01_inventory/output/raw/files.json",
+  "edge_list": "01_inventory/output/raw/edges.json",
+  "leftovers_found": 0,
+  "ghosts_found": 0,
+  "nouns": [
+    {
+      "noun": "Base layout",
+      "slug": "base-layout",
+      "path": "src/layouts/Base.astro",
+      "class": "layout-spine",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 11,
+      "why_selected": "All 11 non-function pages import Base.astro as the shared shell, the most inbound-edged file in the territory and the definitive layout spine."
+    },
+    {
+      "noun": "Global styles",
+      "slug": "global-styles",
+      "path": "src/styles/global.css",
+      "class": "token-style",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "The territory's sole stylesheet, imported by Base.astro and itself importing every font asset, making it the root of the visual tokens."
+    },
+    {
+      "noun": "Nav",
+      "slug": "nav",
+      "path": "src/components/Nav.astro",
+      "class": "component",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "Imported once by Base.astro but rendered on every page through it, forming half of the site-wide chrome."
+    },
+    {
+      "noun": "Footer",
+      "slug": "footer",
+      "path": "src/components/Footer.astro",
+      "class": "component",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "Imported once by Base.astro but rendered on every page through it, forming the other half of the site-wide chrome alongside Nav."
+    },
+    {
+      "noun": "ContactForm",
+      "slug": "contact-form",
+      "path": "src/components/ContactForm.astro",
+      "class": "component",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "A 263-line component that contact.astro delegates the entire contact flow to, pairing with the contact serverless function."
+    },
+    {
+      "noun": "RigDemo",
+      "slug": "rig-demo",
+      "path": "src/components/RigDemo.astro",
+      "class": "component",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "The largest component in the territory at 552 lines, embedded on the homepage as the interactive pipeline demo."
+    },
+    {
+      "noun": "Content collections config",
+      "slug": "content-config",
+      "path": "src/content.config.ts",
+      "class": "content-collection",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 6,
+      "why_selected": "Defines and types the writing, work, and people collections, all three of which are confirmed queried via getCollection across six page files."
+    },
+    {
+      "noun": "Astro config",
+      "slug": "astro-config",
+      "path": "astro.config.mjs",
+      "class": "site-config",
+      "status": "live",
+      "liveness": "contract",
+      "contract_id": "toolchain-manifest",
+      "inbound_edges": 0,
+      "why_selected": "Read by the Astro build toolchain by name under the toolchain-manifest contract; zero inbound edges but the whole build depends on it."
+    },
+    {
+      "noun": "package.json",
+      "slug": "package-json",
+      "path": "package.json",
+      "class": "site-config",
+      "status": "live",
+      "liveness": "contract",
+      "contract_id": "toolchain-manifest",
+      "inbound_edges": 0,
+      "why_selected": "Declares the build scripts and Astro integrations the toolchain reads by name, live under the toolchain-manifest contract despite no inbound edges."
+    },
+    {
+      "noun": "Contact function",
+      "slug": "contact-function",
+      "path": "functions/api/contact.js",
+      "class": "serverless-function",
+      "status": "live",
+      "liveness": "contract",
+      "contract_id": "pages-functions",
+      "inbound_edges": 0,
+      "why_selected": "Invoked by Cloudflare Pages file-based function routing under the pages-functions contract, the backend counterpart to ContactForm.astro with no edge evidence of its own."
+    }
+  ],
+  "collisions": [
+    {
+      "word": "config",
+      "meanings": [
+        "astro.config.mjs — the Astro/build configuration",
+        "src/content.config.ts — the content-collection schema and loader definitions"
+      ]
+    },
+    {
+      "word": "work",
+      "meanings": [
+        "src/content/work/ — the work content collection (case-study entries)",
+        "src/pages/work/ — the routed work section of the site"
+      ]
+    },
+    {
+      "word": "writing",
+      "meanings": [
+        "src/content/writing/ — the writing content collection (post entries)",
+        "src/pages/writing/ — the routed writing section of the site"
+      ]
+    }
+  ]
+}

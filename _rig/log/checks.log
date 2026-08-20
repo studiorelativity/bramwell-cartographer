@@ -1,0 +1,371 @@
+=== 2026-08-19_171909 01_inventory jq -e 'type == "array"' output/raw/edges.json ===
+true
+=== 2026-08-19_171909 01_inventory jq -e '[.[] | select(.from == null or .to == null or .line == null)] | length == 0' output/raw/edges.json ===
+true
+=== 2026-08-19_171909 01_inventory jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_171909 01_inventory jq -e '.file_list | strings | endswith("files.json")' output/feed.json ===
+true
+=== 2026-08-19_171909 01_inventory jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_171909 01_inventory test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_171909 01_inventory jq -e '(.nouns | length) >= 8 and (.nouns | length) <= 12' output/feed.json ===
+true
+=== 2026-08-19_171909 01_inventory jq -e '[.nouns[] | select((.status | IN("live","leftover","ghost")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_171909 01_inventory jq -e '[.nouns[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_171909 01_inventory jq -e '(.collisions | type) == "array"' output/feed.json ===
+true
+=== 2026-08-19_171909 01_inventory jq -e '(.ghosts_found | numbers) >= 0 and (.leftovers_found | numbers) >= 0' output/feed.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '(.cards | type) == "array"' output/card-index.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '(.cards | length) >= 8 and (.cards | length) <= 12' output/card-index.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '.catalog | strings | endswith("catalog.md")' output/card-index.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '[.cards[] | select((.file | strings | startswith("cards/")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '[.cards[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/card-index.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '.card_index | strings | endswith("card-index.json")' output/feed.json ===
+true
+=== 2026-08-19_171909 02_cards test -f "../$(jq -r '.card_index' output/feed.json)" ===
+=== 2026-08-19_171909 02_cards jq -e '.catalog_path | strings | endswith("catalog.md")' output/feed.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '.cards_dir | strings | endswith("cards")' output/feed.json ===
+true
+=== 2026-08-19_171909 02_cards jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_171909 02_cards test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_171909 02_cards jq -e '(.card_count | numbers) >= 8 and (.card_count | numbers) <= 12' output/feed.json ===
+true
+=== 2026-08-19_171909 02_cards test "$(jq -r '.card_count' output/feed.json)" = "$(jq -r '.cards | length' output/card-index.json)" ===
+=== 2026-08-19_171909 03_verify jq -e '(.citations | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_171909 03_verify jq -e '(.cards | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_171909 03_verify jq -e '[.citations[] | select(.resolved | not)] | if length == 0 then true else (.[] | "UNRESOLVED CITATION -- card \(.card): \(.citation): \(.reason)"), false end' output/raw/citation-report.json ===
+"UNRESOLVED CITATION -- card base-layout.md: .astro:2@dcba75e: path '.astro' is under a scan exclusion and is not part of the mapped territory"
+false
+=== 2026-08-19_174535 03_verify jq -e '(.citations | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_174535 03_verify jq -e '(.cards | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_174535 03_verify jq -e '[.citations[] | select(.resolved | not)] | if length == 0 then true else (.[] | "UNRESOLVED CITATION -- card \(.card): \(.citation): \(.reason)"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_174535 03_verify jq -e '[.cards[] | select(.over_cap)] | if length == 0 then true else (.[] | "OVER QUOTE CAP -- card \(.card): \(.quoted_lines) quoted lines"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_174535 03_verify jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_174535 03_verify jq -e '.citation_report | strings | endswith("citation-report.json")' output/feed.json ===
+true
+=== 2026-08-19_174535 03_verify test -f "../$(jq -r '.citation_report' output/feed.json)" ===
+=== 2026-08-19_174535 03_verify jq -e '(.citations_total | numbers) > 0' output/feed.json ===
+true
+=== 2026-08-19_174535 03_verify jq -e '(.citations_unresolved | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_174535 03_verify jq -e '(.cards_over_cap | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_174535 03_verify jq -e '(.cards_checked | numbers) >= 8' output/feed.json ===
+true
+=== 2026-08-19_174535 03_verify test "$(jq -r '.citations_total' output/feed.json)" = "$(jq -r '.totals.citations' output/raw/citation-report.json)" ===
+=== 2026-08-19_174535 03_verify test "$(jq -r '.citations_unresolved' output/feed.json)" = "$(jq -r '.totals.unresolved' output/raw/citation-report.json)" ===
+=== 2026-08-19_174535 03_verify test "$(jq -r '.cards_checked' output/feed.json)" = "$(jq -r '.totals.cards' output/raw/citation-report.json)" ===
+=== 2026-08-19_174535 03_verify test "$(jq -r '.cards_over_cap' output/feed.json)" = "$(jq -r '.totals.cards_over_cap' output/raw/citation-report.json)" ===
+=== 2026-08-19_180514 01_inventory jq -e 'type == "array"' output/raw/edges.json ===
+true
+=== 2026-08-19_180514 01_inventory jq -e '[.[] | select(.from == null or .to == null or .line == null)] | length == 0' output/raw/edges.json ===
+true
+=== 2026-08-19_180514 01_inventory jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_180514 01_inventory jq -e '.file_list | strings | endswith("files.json")' output/feed.json ===
+true
+=== 2026-08-19_180514 01_inventory jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_180514 01_inventory test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_180514 01_inventory jq -e '(.nouns | length) >= 8 and (.nouns | length) <= 12' output/feed.json ===
+true
+=== 2026-08-19_180514 01_inventory jq -e '[.nouns[] | select((.status | IN("live","leftover","ghost")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_180514 01_inventory jq -e '[.nouns[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_180514 01_inventory jq -e '(.collisions | type) == "array"' output/feed.json ===
+true
+=== 2026-08-19_180514 01_inventory jq -e '(.ghosts_found | numbers) >= 0 and (.leftovers_found | numbers) >= 0' output/feed.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '(.cards | type) == "array"' output/card-index.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '(.cards | length) >= 8 and (.cards | length) <= 12' output/card-index.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '.catalog | strings | endswith("catalog.md")' output/card-index.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '[.cards[] | select((.file | strings | startswith("cards/")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '[.cards[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/card-index.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '.card_index | strings | endswith("card-index.json")' output/feed.json ===
+true
+=== 2026-08-19_180514 02_cards test -f "../$(jq -r '.card_index' output/feed.json)" ===
+=== 2026-08-19_180514 02_cards jq -e '.catalog_path | strings | endswith("catalog.md")' output/feed.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '.cards_dir | strings | endswith("cards")' output/feed.json ===
+true
+=== 2026-08-19_180514 02_cards jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_180514 02_cards test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_180514 02_cards jq -e '(.card_count | numbers) >= 8 and (.card_count | numbers) <= 12' output/feed.json ===
+true
+=== 2026-08-19_180514 02_cards test "$(jq -r '.card_count' output/feed.json)" = "$(jq -r '.cards | length' output/card-index.json)" ===
+=== 2026-08-19_180514 03_verify jq -e '(.citations | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_180514 03_verify jq -e '(.cards | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_180514 03_verify jq -e '[.citations[] | select(.resolved | not)] | if length == 0 then true else (.[] | "UNRESOLVED CITATION -- card \(.card): \(.citation): \(.reason)"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_180514 03_verify jq -e '[.cards[] | select(.over_cap)] | if length == 0 then true else (.[] | "OVER QUOTE CAP -- card \(.card): \(.quoted_lines) quoted lines"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_180514 03_verify jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_180514 03_verify jq -e '.citation_report | strings | endswith("citation-report.json")' output/feed.json ===
+true
+=== 2026-08-19_180514 03_verify test -f "../$(jq -r '.citation_report' output/feed.json)" ===
+=== 2026-08-19_180514 03_verify jq -e '(.citations_total | numbers) > 0' output/feed.json ===
+true
+=== 2026-08-19_180514 03_verify jq -e '(.citations_unresolved | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_180514 03_verify jq -e '(.cards_over_cap | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_180514 03_verify jq -e '(.cards_checked | numbers) >= 8' output/feed.json ===
+true
+=== 2026-08-19_180514 03_verify test "$(jq -r '.citations_total' output/feed.json)" = "$(jq -r '.totals.citations' output/raw/citation-report.json)" ===
+=== 2026-08-19_180514 03_verify test "$(jq -r '.citations_unresolved' output/feed.json)" = "$(jq -r '.totals.unresolved' output/raw/citation-report.json)" ===
+=== 2026-08-19_180514 03_verify test "$(jq -r '.cards_checked' output/feed.json)" = "$(jq -r '.totals.cards' output/raw/citation-report.json)" ===
+=== 2026-08-19_180514 03_verify test "$(jq -r '.cards_over_cap' output/feed.json)" = "$(jq -r '.totals.cards_over_cap' output/raw/citation-report.json)" ===
+=== 2026-08-19_211434 01_inventory jq -e 'type == "array"' output/raw/edges.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '[.[] | select(.from == null or .to == null or .line == null)] | length == 0' output/raw/edges.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '.file_list | strings | endswith("files.json")' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_211434 01_inventory jq -e '(.nouns | length) >= 8 and (.nouns | length) <= 12' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '[.nouns[] | select((.status | IN("live","leftover","ghost")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '[.nouns[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '[.nouns[] | select((.status == "live") != ((.liveness // null) != null))] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '[.nouns[] | select(.liveness != null) | select((.liveness | IN("edge","contract")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '[.nouns[] | select(((.liveness // "") == "contract") != ((.contract_id // null) != null))] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '[.nouns[] | select((.liveness // "") == "edge") | select(.inbound_edges < 1)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '[.nouns[] | select(.status == "leftover") | select(.inbound_edges != 0 or (.contract_id // null) != null)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '(.collisions | type) == "array"' output/feed.json ===
+true
+=== 2026-08-19_211434 01_inventory jq -e '(.ghosts_found | numbers) >= 0 and (.leftovers_found | numbers) >= 0' output/feed.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '(.cards | type) == "array"' output/card-index.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '(.cards | length) >= 8 and (.cards | length) <= 12' output/card-index.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '.catalog | strings | endswith("catalog.md")' output/card-index.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '[.cards[] | select((.file | strings | startswith("cards/")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '[.cards[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/card-index.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '.card_index | strings | endswith("card-index.json")' output/feed.json ===
+true
+=== 2026-08-19_211434 02_cards test -f "../$(jq -r '.card_index' output/feed.json)" ===
+=== 2026-08-19_211434 02_cards jq -e '.catalog_path | strings | endswith("catalog.md")' output/feed.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '.cards_dir | strings | endswith("cards")' output/feed.json ===
+true
+=== 2026-08-19_211434 02_cards jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_211434 02_cards test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_211434 02_cards jq -e '(.card_count | numbers) >= 8 and (.card_count | numbers) <= 12' output/feed.json ===
+true
+=== 2026-08-19_211434 02_cards test "$(jq -r '.card_count' output/feed.json)" = "$(jq -r '.cards | length' output/card-index.json)" ===
+=== 2026-08-19_211434 03_verify jq -e '(.citations | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_211434 03_verify jq -e '(.cards | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_211434 03_verify jq -e '[.citations[] | select(.resolved | not)] | if length == 0 then true else (.[] | "UNRESOLVED CITATION -- card \(.card): \(.citation): \(.reason)"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_211434 03_verify jq -e '[.cards[] | select(.over_cap)] | if length == 0 then true else (.[] | "OVER QUOTE CAP -- card \(.card): \(.quoted_lines) quoted lines"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_211434 03_verify jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_211434 03_verify jq -e '.citation_report | strings | endswith("citation-report.json")' output/feed.json ===
+true
+=== 2026-08-19_211434 03_verify test -f "../$(jq -r '.citation_report' output/feed.json)" ===
+=== 2026-08-19_211434 03_verify jq -e '(.citations_total | numbers) > 0' output/feed.json ===
+true
+=== 2026-08-19_211434 03_verify jq -e '(.citations_unresolved | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 03_verify jq -e '(.cards_over_cap | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_211434 03_verify jq -e '(.cards_checked | numbers) >= 8' output/feed.json ===
+true
+=== 2026-08-19_211434 03_verify test "$(jq -r '.citations_total' output/feed.json)" = "$(jq -r '.totals.citations' output/raw/citation-report.json)" ===
+=== 2026-08-19_211434 03_verify test "$(jq -r '.citations_unresolved' output/feed.json)" = "$(jq -r '.totals.unresolved' output/raw/citation-report.json)" ===
+=== 2026-08-19_211434 03_verify test "$(jq -r '.cards_checked' output/feed.json)" = "$(jq -r '.totals.cards' output/raw/citation-report.json)" ===
+=== 2026-08-19_211434 03_verify test "$(jq -r '.cards_over_cap' output/feed.json)" = "$(jq -r '.totals.cards_over_cap' output/raw/citation-report.json)" ===
+=== 2026-08-19_221513 01_inventory jq -e 'type == "array"' output/raw/edges.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '[.[] | select(.from == null or .to == null or .line == null)] | length == 0' output/raw/edges.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '.file_list | strings | endswith("files.json")' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_221513 01_inventory jq -e '(.nouns | length) >= 8 and (.nouns | length) <= 12' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '[.nouns[] | select((.status | IN("live","leftover","ghost")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '[.nouns[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '[.nouns[] | select((.status == "live") != ((.liveness // null) != null))] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '[.nouns[] | select(.liveness != null) | select((.liveness | IN("edge","contract")) | not)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '[.nouns[] | select(((.liveness // "") == "contract") != ((.contract_id // null) != null))] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '[.nouns[] | select((.liveness // "") == "edge") | select(.inbound_edges < 1)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '[.nouns[] | select(.status == "leftover") | select(.inbound_edges != 0 or (.contract_id // null) != null)] | length == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '(.collisions | type) == "array"' output/feed.json ===
+true
+=== 2026-08-19_221513 01_inventory jq -e '(.ghosts_found | numbers) >= 0 and (.leftovers_found | numbers) >= 0' output/feed.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '(.cards | type) == "array"' output/card-index.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '(.cards | length) >= 8 and (.cards | length) <= 12' output/card-index.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '.catalog | strings | endswith("catalog.md")' output/card-index.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '[.cards[] | select((.file | strings | startswith("cards/")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '[.cards[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/card-index.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '.card_index | strings | endswith("card-index.json")' output/feed.json ===
+true
+=== 2026-08-19_221513 02_cards test -f "../$(jq -r '.card_index' output/feed.json)" ===
+=== 2026-08-19_221513 02_cards jq -e '.catalog_path | strings | endswith("catalog.md")' output/feed.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '.cards_dir | strings | endswith("cards")' output/feed.json ===
+true
+=== 2026-08-19_221513 02_cards jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_221513 02_cards test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_221513 02_cards jq -e '(.card_count | numbers) >= 8 and (.card_count | numbers) <= 12' output/feed.json ===
+true
+=== 2026-08-19_221513 02_cards test "$(jq -r '.card_count' output/feed.json)" = "$(jq -r '.cards | length' output/card-index.json)" ===
+=== 2026-08-19_221513 03_verify jq -e '(.citations | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_221513 03_verify jq -e '(.cards | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_221513 03_verify jq -e '[.citations[] | select(.resolved | not)] | if length == 0 then true else (.[] | "UNRESOLVED CITATION -- card \(.card): \(.citation): \(.reason)"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_221513 03_verify jq -e '[.cards[] | select(.over_cap)] | if length == 0 then true else (.[] | "OVER QUOTE CAP -- card \(.card): \(.quoted_lines) quoted lines"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_221513 03_verify jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_221513 03_verify jq -e '.citation_report | strings | endswith("citation-report.json")' output/feed.json ===
+true
+=== 2026-08-19_221513 03_verify test -f "../$(jq -r '.citation_report' output/feed.json)" ===
+=== 2026-08-19_221513 03_verify jq -e '(.citations_total | numbers) > 0' output/feed.json ===
+true
+=== 2026-08-19_221513 03_verify jq -e '(.citations_unresolved | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 03_verify jq -e '(.cards_over_cap | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_221513 03_verify jq -e '(.cards_checked | numbers) >= 8' output/feed.json ===
+true
+=== 2026-08-19_221513 03_verify test "$(jq -r '.citations_total' output/feed.json)" = "$(jq -r '.totals.citations' output/raw/citation-report.json)" ===
+=== 2026-08-19_221513 03_verify test "$(jq -r '.citations_unresolved' output/feed.json)" = "$(jq -r '.totals.unresolved' output/raw/citation-report.json)" ===
+=== 2026-08-19_221513 03_verify test "$(jq -r '.cards_checked' output/feed.json)" = "$(jq -r '.totals.cards' output/raw/citation-report.json)" ===
+=== 2026-08-19_221513 03_verify test "$(jq -r '.cards_over_cap' output/feed.json)" = "$(jq -r '.totals.cards_over_cap' output/raw/citation-report.json)" ===
+=== 2026-08-19_223934 02_cards jq -e '(.cards | type) == "array"' output/card-index.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '(.cards | length) >= 8 and (.cards | length) <= 12' output/card-index.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '.catalog | strings | endswith("catalog.md")' output/card-index.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '[.cards[] | select((.file | strings | startswith("cards/")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '[.cards[] | select((.slug | strings | test("^[a-z0-9]+(-[a-z0-9]+)*$")) | not)] | length == 0' output/card-index.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/card-index.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '.card_index | strings | endswith("card-index.json")' output/feed.json ===
+true
+=== 2026-08-19_223934 02_cards test -f "../$(jq -r '.card_index' output/feed.json)" ===
+=== 2026-08-19_223934 02_cards jq -e '.catalog_path | strings | endswith("catalog.md")' output/feed.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '.cards_dir | strings | endswith("cards")' output/feed.json ===
+true
+=== 2026-08-19_223934 02_cards jq -e '.edge_list | strings | endswith("edges.json")' output/feed.json ===
+true
+=== 2026-08-19_223934 02_cards test -f "../$(jq -r '.edge_list' output/feed.json)" ===
+=== 2026-08-19_223934 02_cards jq -e '(.card_count | numbers) >= 8 and (.card_count | numbers) <= 12' output/feed.json ===
+true
+=== 2026-08-19_223934 02_cards test "$(jq -r '.card_count' output/feed.json)" = "$(jq -r '.cards | length' output/card-index.json)" ===
+=== 2026-08-19_223934 03_verify jq -e '(.citations | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_223934 03_verify jq -e '(.cards | type) == "array"' output/raw/citation-report.json ===
+true
+=== 2026-08-19_223934 03_verify jq -e '[.citations[] | select(.resolved | not)] | if length == 0 then true else (.[] | "UNRESOLVED CITATION -- card \(.card): \(.citation): \(.reason)"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_223934 03_verify jq -e '[.cards[] | select(.over_cap)] | if length == 0 then true else (.[] | "OVER QUOTE CAP -- card \(.card): \(.quoted_lines) quoted lines"), false end' output/raw/citation-report.json ===
+true
+=== 2026-08-19_223934 03_verify jq -e '.territory_commit | strings | test("^[0-9a-f]{7,40}$")' output/feed.json ===
+true
+=== 2026-08-19_223934 03_verify jq -e '.citation_report | strings | endswith("citation-report.json")' output/feed.json ===
+true
+=== 2026-08-19_223934 03_verify test -f "../$(jq -r '.citation_report' output/feed.json)" ===
+=== 2026-08-19_223934 03_verify jq -e '(.citations_total | numbers) > 0' output/feed.json ===
+true
+=== 2026-08-19_223934 03_verify jq -e '(.citations_unresolved | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_223934 03_verify jq -e '(.cards_over_cap | numbers) == 0' output/feed.json ===
+true
+=== 2026-08-19_223934 03_verify jq -e '(.cards_checked | numbers) >= 8' output/feed.json ===
+true
+=== 2026-08-19_223934 03_verify test "$(jq -r '.citations_total' output/feed.json)" = "$(jq -r '.totals.citations' output/raw/citation-report.json)" ===
+=== 2026-08-19_223934 03_verify test "$(jq -r '.citations_unresolved' output/feed.json)" = "$(jq -r '.totals.unresolved' output/raw/citation-report.json)" ===
+=== 2026-08-19_223934 03_verify test "$(jq -r '.cards_checked' output/feed.json)" = "$(jq -r '.totals.cards' output/raw/citation-report.json)" ===
+=== 2026-08-19_223934 03_verify test "$(jq -r '.cards_over_cap' output/feed.json)" = "$(jq -r '.totals.cards_over_cap' output/raw/citation-report.json)" ===

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "03_verify feed (terminal stage)",
+  "type": "object",
+  "required": ["territory_commit", "citation_report", "citations_total", "citations_unresolved", "cards_checked", "cards_over_cap"],
+  "properties": {
+    "territory_commit": { "type": "string", "minLength": 7, "default": "0000000" },
+    "citation_report": {
+      "type": "string", "minLength": 1,
+      "description": "Rig-root-relative path to the report bin/cite-check.sh wrote.",
+      "default": "03_verify/output/raw/citation-report.json"
+    },
+    "citations_total": { "type": "integer", "minimum": 1, "default": 1 },
+    "citations_unresolved": { "type": "integer", "minimum": 0, "maximum": 0, "default": 0 },
+    "cards_checked": { "type": "integer", "minimum": 8, "default": 8 },
+    "cards_over_cap": { "type": "integer", "minimum": 0, "maximum": 0, "default": 0 }
+  }
+}

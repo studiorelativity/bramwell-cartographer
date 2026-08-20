@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "edges.json as bin/scan.sh writes it",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": ["from", "to", "line", "spec", "resolved"],
+    "properties": {
+      "from": { "type": "string", "minLength": 1, "default": "src/layouts/Base.astro" },
+      "to":   { "type": "string", "minLength": 1, "default": "src/components/Nav.astro" },
+      "line": { "type": "integer", "minimum": 1, "default": 2 },
+      "spec": { "type": "string", "minLength": 1, "default": "../components/Nav.astro" },
+      "resolved": { "type": "boolean", "default": true }
+    }
+  }
+}

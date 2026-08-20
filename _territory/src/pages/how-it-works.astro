@@ -1,0 +1,142 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base
+  title="How it works — Runtime-Isolated Gates"
+  description="RIG is Runtime-Isolated Gates: staged work, a mechanical gate at every handoff, and an independent verdict after every step."
+>
+  <section class="nf-section">
+    <div class="nf-content">
+      <h1>What RIG is</h1>
+      <p>
+        Work runs in isolated stages. Every handoff between them passes a mechanical
+        gate, and every stage's output is judged by something that did not produce it.
+        The architecture that does this is called RIG — Runtime-Isolated Gates. The
+        adjective is "isolated": the gates sit between runtimes that share nothing.
+      </p>
+      <p>
+        Each step starts fresh with only the context it needs. Nothing carries over
+        implicitly, so nothing drifts across a long session and no earlier mistake rides
+        along unexamined into a later one.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>The loop</h2>
+      <p>One vocabulary, defined here and used exactly.</p>
+      <p>
+        A <strong>stage</strong> is one unit of work with declared inputs and declared outputs. A
+        <strong>fitting</strong> is one process inside a stage: a single invocation with its own
+        instruction, its own file permissions, and its own budget. A <strong>feed</strong> is the
+        file a stage hands to the next stage — the only thing that crosses a stage
+        boundary. A <strong>gate</strong> is a mechanical check, run before a stage starts, that the
+        keys the stage requires are present in the feed it was handed. A <strong>verdict</strong> is
+        the file a verifier writes: a status of pass, halt, or fail, and one sentence of
+        reason.
+      </p>
+      <p>Every stage runs the same loop:</p>
+      <ol>
+        <li><strong>Gate.</strong> The feed from the previous stage is checked against the keys this
+          stage requires. A missing key stops the run before any work begins.</li>
+        <li><strong>Work.</strong> The fitting reads what its contract names, writes what its contract
+          names, and nothing else.</li>
+        <li><strong>Verdict.</strong> A separate invocation reads the output and writes a status and a
+          reason. It judges; it does not repair.</li>
+        <li><strong>Branch.</strong> Pass continues to the next stage. Halt and fail stop the run and
+          leave every artifact on disk.</li>
+      </ol>
+      <p>
+        A <strong>halt</strong> and a <strong>fail</strong> are different events. A halt means the plumbing is
+        suspect: something upstream did not arrive in the shape the next stage was
+        promised. A fail means the plumbing worked and the work itself was judged bad.
+        They get fixed in different places, so they are named differently.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content nf-content--wide">
+      <h2>Jidoka for AI</h2>
+      <p>
+        The frame is jidoka: the line stops at the defect, the defect never travels
+        downstream, and the stop is information rather than failure. The mapping is
+        direct.
+      </p>
+      <table>
+        <thead>
+          <tr><th>On the factory line</th><th>In the pipeline</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>The andon cord — any worker can stop the line</td><td>The verdict file. Any verifier stops the run, and the controller has no override.</td></tr>
+          <tr><td>Stop-the-line — defects never travel downstream</td><td>Halt and fail semantics. A defect at one stage never becomes the input to the next.</td></tr>
+          <tr><td>Go and see the actual thing</td><td>The preserved artifact. Diagnosis happens from the failing file on disk, never from a description of it.</td></tr>
+          <tr><td>Fix the source, not the piece</td><td>A fail sends you to the instruction or the rubric, not to hand-editing the output. Repeated hand-edits of the same kind mean the process is underspecified.</td></tr>
+          <tr><td>No rework-and-hope</td><td>No automatic retry. A retry that happens to pass hides a defect that will come back.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Where every handoff is inspected</h2>
+      <p>
+        A stage does not advance because nobody objected. It advances because a checker
+        affirmatively passed it, and the checker is structurally separate from the work:
+        workers never grade their own output, verifiers cannot edit what they judge, and
+        the controller that sequences the run cannot think about the content at all.
+      </p>
+      <p>
+        That separation is the whole mechanism. The judgment runs in its own runtime,
+        with its own context, so it does not inherit the assumptions that produced the
+        work it is reading.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Where the analogy breaks</h2>
+      <p>
+        Stated plainly, because a manufacturing-literate reader will test the analogy
+        here first.
+      </p>
+      <p>
+        The factory frame is built around continuous flow and takt time. This is a batch
+        machine by design: local-first, sequential, one run at a time.
+      </p>
+      <p>
+        Kaizen's worker-driven improvement loop has no analog here yet. Improvement is a
+        human reading the logs and revising the fittings.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>What the run records</h2>
+      <p>
+        Every invocation writes down what it was asked to do, what it produced, what it
+        cost, and what was decided about it. Failed runs are preserved rather than
+        cleaned up: the failing feed, the gate's error line, and the verdict stay on
+        disk as the diagnosis.
+      </p>
+      <p>
+        This site was built and verified on RIG, no.fail's pipeline architecture: every
+        stage gated before it ran, every stage's output verified after it ran. The loop
+        described above is that pipeline. A white paper drawing on the run's records is
+        forthcoming.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Next</h2>
+      <p>Tell us what your team does by hand that it shouldn't.</p>
+      <a class="nf-btn" href="/contact/">Start there</a>
+    </div>
+  </section>
+</Base>

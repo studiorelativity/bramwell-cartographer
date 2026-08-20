@@ -1,0 +1,108 @@
+---
+import Base from "../layouts/Base.astro";
+import RigDemo from "../components/RigDemo.astro";
+---
+<Base
+  title="no.fail — deterministic control, verified judgment"
+  description="no.fail installs AI into established businesses with a checker after every step. If we can't help you, you don't pay."
+>
+  <section class="nf-section">
+    <div class="nf-content">
+      <h1>Nothing checked the work.</h1>
+      <p>
+        That's why the pilot stalled — not your team, not the model. no.fail installs AI
+        with a checker after every step, and the line stops at the first defect.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content nf-content--wide">
+      <p class="nf-eyebrow">The demo</p>
+      <p>
+        This is a demonstration of the mechanism, not a live AI run. Pick a scenario and
+        watch what the line does with it.
+      </p>
+      <RigDemo />
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Method</h2>
+      <p>
+        The work runs in numbered steps. Each step is reviewed at the boundary before
+        the next one starts. Nothing gets built three steps past the point where it went
+        wrong, because there is no third step until the first one is signed off. We call
+        it rigoka: stop-the-line discipline for AI. When a step is judged bad, the run
+        stops there and what it produced stays exactly where it landed, so you diagnose
+        from the actual thing rather than a summary of it. A stop is information.
+      </p>
+      <p>
+        <b>
+        This site was built and verified the same way, on the pipeline architecture
+        running in the demo above: every step gated before it started, every step's
+        output checked after it finished.
+        </b>
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>What you get</h2>
+      <p>
+        Checking is structural. The step that does the work never grades the work, and
+        the check comes from somewhere the work cannot reach.
+      </p>
+      <p>
+        Every check leaves evidence. Each step records what it did, what it cost, and
+        what was decided about it, as a byproduct of running. If you carry compliance
+        exposure, that record is what procurement asks for.
+      </p>
+      <p>
+        Failure has a price ceiling. A run stops at the defect, so the worst case is one
+        step's budget and a readable reason.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Terms</h2>
+      <p>
+        Discovery is a $1,000 working session, non-refundable, credited against your
+        invoice if you engage. It ends with a written findings memo: what we'd automate
+        first, where your process splits into stages, what we'd verify, roughly what it
+        costs. It exists to filter people shopping for a silver bullet.
+      </p>
+      <p>If we can't help you, you don't pay.</p>
+      <p>
+        Done-for-you: we build it, we hand it over, and your team is walked into the
+        system by a person rather than a login and a document.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Fit</h2>
+      <p>
+        Not for freelancers and solo operators, for businesses that aren't established
+        yet, or for anyone looking for a silver bullet.
+      </p>
+      <p>
+        For you if you have revenue, staff, and a process everyone already knows should
+        be automated. That is the work.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>What to do next</h2>
+      <p>Tell us what your team does by hand that it shouldn't.</p>
+      <a class="nf-btn" href="/contact/">Start there</a>
+    </div>
+  </section>
+</Base>

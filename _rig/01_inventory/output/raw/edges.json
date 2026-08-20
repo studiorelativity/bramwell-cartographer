@@ -1,0 +1,275 @@
+[
+	{
+		"from": "src/components/Footer.astro",
+		"to": "src/pages/index.astro",
+		"line": 19,
+		"spec": "/",
+		"resolved": true
+	},
+	{
+		"from": "src/components/Nav.astro",
+		"to": "src/pages/index.astro",
+		"line": 17,
+		"spec": "/",
+		"resolved": true
+	},
+	{
+		"from": "src/layouts/Base.astro",
+		"to": "src/components/Nav.astro",
+		"line": 2,
+		"spec": "../components/Nav.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/layouts/Base.astro",
+		"to": "src/components/Footer.astro",
+		"line": 3,
+		"spec": "../components/Footer.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/layouts/Base.astro",
+		"to": "src/styles/global.css",
+		"line": 4,
+		"spec": "../styles/global.css",
+		"resolved": true
+	},
+	{
+		"from": "src/layouts/Base.astro",
+		"to": "public/favicon.svg",
+		"line": 21,
+		"spec": "/favicon.svg",
+		"resolved": true
+	},
+	{
+		"from": "src/layouts/Base.astro",
+		"to": "public/fonts/archivo-800.woff2",
+		"line": 22,
+		"spec": "/fonts/archivo-800.woff2",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/about.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/about.astro",
+		"to": "src/content.config.ts",
+		"line": 5,
+		"spec": "astro:content",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/contact.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/contact.astro",
+		"to": "src/components/ContactForm.astro",
+		"line": 3,
+		"spec": "../components/ContactForm.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/contact/error.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/contact/error.astro",
+		"to": "src/pages/contact.astro",
+		"line": 17,
+		"spec": "/contact/",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/contact/sent.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/contact/sent.astro",
+		"to": "src/pages/index.astro",
+		"line": 14,
+		"spec": "/",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/how-it-works.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/how-it-works.astro",
+		"to": "src/pages/contact.astro",
+		"line": 139,
+		"spec": "/contact/",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/index.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/index.astro",
+		"to": "src/components/RigDemo.astro",
+		"line": 3,
+		"spec": "../components/RigDemo.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/index.astro",
+		"to": "src/pages/contact.astro",
+		"line": 105,
+		"spec": "/contact/",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/privacy.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/rss.xml.js",
+		"to": "src/content.config.ts",
+		"line": 5,
+		"spec": "astro:content",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/work/[...slug].astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/work/[...slug].astro",
+		"to": "src/content.config.ts",
+		"line": 6,
+		"spec": "astro:content",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/work/index.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/work/index.astro",
+		"to": "src/content.config.ts",
+		"line": 5,
+		"spec": "astro:content",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/writing/[...slug].astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/writing/[...slug].astro",
+		"to": "src/content.config.ts",
+		"line": 6,
+		"spec": "astro:content",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/writing/index.astro",
+		"to": "src/layouts/Base.astro",
+		"line": 2,
+		"spec": "../../layouts/Base.astro",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/writing/index.astro",
+		"to": "src/content.config.ts",
+		"line": 5,
+		"spec": "astro:content",
+		"resolved": true
+	},
+	{
+		"from": "src/pages/writing/index.astro",
+		"to": "src/pages/rss.xml.js",
+		"line": 44,
+		"spec": "/rss.xml",
+		"resolved": true
+	},
+	{
+		"from": "src/styles/global.css",
+		"to": "public/fonts/archivo-600.woff2",
+		"line": 8,
+		"spec": "/fonts/archivo-600.woff2",
+		"resolved": true
+	},
+	{
+		"from": "src/styles/global.css",
+		"to": "public/fonts/archivo-700.woff2",
+		"line": 15,
+		"spec": "/fonts/archivo-700.woff2",
+		"resolved": true
+	},
+	{
+		"from": "src/styles/global.css",
+		"to": "public/fonts/archivo-800.woff2",
+		"line": 22,
+		"spec": "/fonts/archivo-800.woff2",
+		"resolved": true
+	},
+	{
+		"from": "src/styles/global.css",
+		"to": "public/fonts/inter-400.woff2",
+		"line": 29,
+		"spec": "/fonts/inter-400.woff2",
+		"resolved": true
+	},
+	{
+		"from": "src/styles/global.css",
+		"to": "public/fonts/inter-500.woff2",
+		"line": 36,
+		"spec": "/fonts/inter-500.woff2",
+		"resolved": true
+	},
+	{
+		"from": "src/styles/global.css",
+		"to": "public/fonts/inter-600.woff2",
+		"line": 43,
+		"spec": "/fonts/inter-600.woff2",
+		"resolved": true
+	},
+	{
+		"from": "src/styles/global.css",
+		"to": "public/fonts/jetbrains-mono-400.woff2",
+		"line": 50,
+		"spec": "/fonts/jetbrains-mono-400.woff2",
+		"resolved": true
+	},
+	{
+		"from": "src/styles/global.css",
+		"to": "public/fonts/jetbrains-mono-700.woff2",
+		"line": 57,
+		"spec": "/fonts/jetbrains-mono-700.woff2",
+		"resolved": true
+	}
+]

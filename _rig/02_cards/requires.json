@@ -1,0 +1,4 @@
+{
+  "required_keys": ["territory_commit", "file_list", "edge_list", "nouns", "collisions", "leftovers_found", "ghosts_found"],
+  "path_keys": ["edge_list"]
+}

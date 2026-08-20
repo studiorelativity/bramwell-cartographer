@@ -1,0 +1,32 @@
+---
+// Footer.astro — site chrome. Every word here comes from the copy manifest's
+// footer_strings (02_copy/output/copy/site-strings.md), consumed by name.
+// The lockup instance here is NOT the nav instance, so its cursor is static
+// (M2) via the .nf-logo--static modifier class, explicit in the markup.
+const buildYear = new Date().getFullYear();
+
+const links = [
+  { label: "Home", href: "/" },
+  { label: "How it works", href: "/how-it-works/" },
+  { label: "Writing", href: "/writing/" },
+  { label: "Work", href: "/work/" },
+  { label: "About", href: "/about/" },
+  { label: "Contact", href: "/contact/" },
+  { label: "Privacy", href: "/privacy/" },
+];
+---
+<footer class="nf-footer">
+  <a class="nf-logo nf-logo--static" href="/" aria-label="no.fail">
+    <span aria-hidden="true">no<span class="nf-dot">.</span>fail</span>
+    <span class="nf-cursor" aria-hidden="true"></span>
+  </a>
+  <nav aria-label="Footer">
+    <ul class="nf-footer-links">
+      {links.map((item) => (
+        <li><a href={item.href}>{item.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+  <p class="nf-footer-verified">This site was built and verified on RIG, no.fail's pipeline architecture: every stage gated, and every stage's output verified.</p>
+  <p class="nf-footer-copyright">© {buildYear} no.fail</p>
+</footer>

@@ -1,0 +1,552 @@
+---
+// RigDemo.astro — the rig-loop demonstration widget.
+// Self-contained: markup, scoped styles, one vanilla script. No imports, no
+// dependencies, no network, no storage, no free-text input.
+// Strings are consumed verbatim from 02_copy/output/copy/widget-strings.md.
+// Artifact literals (gate stderr line, journal line, JSON payloads) are
+// production shapes fixed by _config/demo-spec.md.
+---
+
+<section class="rd" aria-label="Interactive demonstration of a gated pipeline run">
+  <p class="rd-frame">This is a demonstration of the mechanism, not a live AI run.</p>
+
+  <div class="rd-controls rd-js" role="group" aria-label="Choose a scenario">
+    <button type="button" class="rd-btn" data-scenario="1">Clean run</button>
+    <button type="button" class="rd-btn" data-scenario="2">Malformed handoff</button>
+    <button type="button" class="rd-btn" data-scenario="3">Bad work</button>
+    <button type="button" class="rd-skip" hidden>Skip to the end</button>
+  </div>
+
+  <!-- Interactive pipeline. Every node exists in the markup so the scoped
+       styles apply; the script only rewrites text and state attributes. -->
+  <div class="rd-live rd-js">
+    <div class="rd-head">
+      <p class="rd-prompt">Pick a scenario to run the line.</p>
+      <span class="rd-chip" data-chip hidden></span>
+    </div>
+
+    <div class="rd-run" data-run>
+      <div class="rd-stage" data-stage="1">
+        <p class="rd-stage-label">01_collect</p>
+        <div class="rd-step" data-step="1-gate"><span class="rd-step-k">GATE</span><span class="rd-step-v">not run</span></div>
+        <div class="rd-step" data-step="1-work"><span class="rd-step-k">WORK</span><span class="rd-step-v">not run</span></div>
+        <div class="rd-step" data-step="1-verdict"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">not run</span></div>
+      </div>
+      <div class="rd-stage" data-stage="2">
+        <p class="rd-stage-label">02_draft</p>
+        <div class="rd-step" data-step="2-gate"><span class="rd-step-k">GATE</span><span class="rd-step-v">not run</span></div>
+        <div class="rd-step" data-step="2-work"><span class="rd-step-k">WORK</span><span class="rd-step-v">not run</span></div>
+        <div class="rd-step" data-step="2-verdict"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">not run</span></div>
+      </div>
+      <div class="rd-stage" data-stage="3">
+        <p class="rd-stage-label">03_render</p>
+        <div class="rd-step" data-step="3-gate"><span class="rd-step-k">GATE</span><span class="rd-step-v">not run</span></div>
+        <div class="rd-step" data-step="3-work"><span class="rd-step-k">WORK</span><span class="rd-step-v">not run</span></div>
+        <div class="rd-step" data-step="3-verdict"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">not run</span></div>
+      </div>
+    </div>
+
+    <p class="rd-journal" data-journal hidden></p>
+    <p class="rd-outcome" data-outcome hidden></p>
+
+    <div class="rd-artifact" data-artifact hidden>
+      <button type="button" class="rd-toggle" data-toggle aria-expanded="false" aria-controls="rd-panel">Show the file</button>
+      <div class="rd-panel" id="rd-panel" data-panel hidden aria-label="Preserved file, display only">
+        <p class="rd-panel-label" data-panel-label></p>
+        <pre class="rd-pre" data-panel-body></pre>
+        <p class="rd-panel-note" data-panel-note hidden>The malformed handoff stays on disk untouched. That file is the diagnosis, not debris to clear away.</p>
+      </div>
+    </div>
+
+    <p class="rd-caption" data-caption hidden></p>
+    <p class="rd-status" role="status" aria-live="polite" aria-label="Run status" data-announce></p>
+  </div>
+
+  <!-- Pre-hydration / no-JS state: the three scenarios' final frames as static
+       markup, so the teaching payload survives JavaScript being off. -->
+  <div class="rd-static">
+    <div class="rd-frame-block">
+      <div class="rd-head">
+        <p class="rd-stage-label">Clean run</p>
+        <span class="rd-chip rd-chip--pass">PASS</span>
+      </div>
+      <div class="rd-run">
+        <div class="rd-stage"><p class="rd-stage-label">01_collect</p>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">GATE</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">WORK</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">pass</span></div></div>
+        <div class="rd-stage"><p class="rd-stage-label">02_draft</p>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">GATE</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">WORK</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">pass</span></div></div>
+        <div class="rd-stage"><p class="rd-stage-label">03_render</p>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">GATE</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">WORK</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">pass</span></div></div>
+      </div>
+      <p class="rd-journal">&#8594; run complete: all stages PASS</p>
+      <p class="rd-outcome">Run complete: every stage passed.</p>
+      <p class="rd-caption">Every step is gated before it starts and checked after it finishes. Nothing objects, so the run finishes.</p>
+    </div>
+
+    <div class="rd-frame-block">
+      <div class="rd-head">
+        <p class="rd-stage-label">Malformed handoff</p>
+        <span class="rd-chip rd-chip--halt">HALT</span>
+      </div>
+      <div class="rd-run">
+        <div class="rd-stage"><p class="rd-stage-label">01_collect</p>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">GATE</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">WORK</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">pass</span></div></div>
+        <div class="rd-stage"><p class="rd-stage-label">02_draft</p>
+          <div class="rd-step rd-step--halt"><span class="rd-step-k">GATE</span><span class="rd-step-v">halt</span></div>
+          <div class="rd-step"><span class="rd-step-k">WORK</span><span class="rd-step-v">never started</span></div>
+          <div class="rd-step"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">never started</span></div></div>
+        <div class="rd-stage"><p class="rd-stage-label">03_render</p>
+          <div class="rd-step"><span class="rd-step-k">GATE</span><span class="rd-step-v">never started</span></div>
+          <div class="rd-step"><span class="rd-step-k">WORK</span><span class="rd-step-v">never started</span></div>
+          <div class="rd-step"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">never started</span></div></div>
+      </div>
+      <p class="rd-outcome">Run halted at the step 2 gate.</p>
+      <div class="rd-panel">
+        <p class="rd-panel-label">The gate's error line</p>
+        <pre class="rd-pre">required key missing: 'sources' in 01_collect/output/feed.json</pre>
+        <p class="rd-panel-label">The handoff file</p>
+        <pre class="rd-pre">&#123;
+  "run_id": "r-0042",
+  "stage": "01_collect",
+  "collected_at": "2026-08-16",
+  "notes": "three documents read"
+&#125;</pre>
+        <p class="rd-panel-note">The malformed handoff stays on disk untouched. That file is the diagnosis, not debris to clear away.</p>
+      </div>
+      <p class="rd-caption">The handoff into step 2 is missing a required key. The gate stops the run before step 2 does any work, so nothing after it runs.</p>
+    </div>
+
+    <div class="rd-frame-block">
+      <div class="rd-head">
+        <p class="rd-stage-label">Bad work</p>
+        <span class="rd-chip rd-chip--fail">FAIL</span>
+      </div>
+      <div class="rd-run">
+        <div class="rd-stage"><p class="rd-stage-label">01_collect</p>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">GATE</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">WORK</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">pass</span></div></div>
+        <div class="rd-stage"><p class="rd-stage-label">02_draft</p>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">GATE</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--pass"><span class="rd-step-k">WORK</span><span class="rd-step-v">pass</span></div>
+          <div class="rd-step rd-step--fail"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">fail</span></div></div>
+        <div class="rd-stage"><p class="rd-stage-label">03_render</p>
+          <div class="rd-step"><span class="rd-step-k">GATE</span><span class="rd-step-v">never started</span></div>
+          <div class="rd-step"><span class="rd-step-k">WORK</span><span class="rd-step-v">never started</span></div>
+          <div class="rd-step"><span class="rd-step-k">VERDICT</span><span class="rd-step-v">never started</span></div></div>
+      </div>
+      <p class="rd-outcome">Run failed at the step 2 verdict.</p>
+      <div class="rd-panel">
+        <p class="rd-panel-label">The verdict</p>
+        <pre class="rd-pre">&#123;"status": "fail", "reason": "The draft drops the sources the handoff supplied and cites none of them."&#125;</pre>
+      </div>
+      <p class="rd-caption">Step 2 runs and produces something. The checker reads it and judges it bad, so the run stops there and step 3 never starts.</p>
+    </div>
+  </div>
+
+  <p class="rd-distinction">A halt means the plumbing is suspect. A fail means the work was judged bad. Different causes, different fixes, so they are never called the same thing.</p>
+</section>
+
+<style>
+  .rd {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .rd-frame,
+  .rd-caption,
+  .rd-distinction,
+  .rd-prompt,
+  .rd-panel-note {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .rd-distinction { color: var(--ink); }
+
+  /* Controls ------------------------------------------------------------ */
+  .rd-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .rd-btn,
+  .rd-skip,
+  .rd-toggle {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 2px;              /* G1: design file states 2px, names no token */
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+  }
+
+  .rd-btn[aria-pressed="true"] {
+    border-color: var(--accent-deep);
+    box-shadow: inset 0 0 0 1px var(--accent-deep);
+  }
+
+  .rd-btn:focus-visible,
+  .rd-skip:focus-visible,
+  .rd-toggle:focus-visible {
+    outline: 2px solid var(--accent-deep);   /* G2: width/offset untokenized */
+    outline-offset: 2px;
+  }
+
+  /* Run view ------------------------------------------------------------ */
+  .rd-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .rd-chip {
+    font-family: var(--font-mono);
+    font-size: var(--text-small);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    border-radius: 0;                 /* chips are square per the design file */
+    padding: var(--space-1) var(--space-2);
+    color: var(--ink);
+  }
+
+  .rd-chip--pass { color: var(--pass-deep); border-color: var(--pass-deep); }
+  .rd-chip--halt { color: var(--halt);      border-color: var(--halt); }
+  .rd-chip--fail { color: var(--fail);      border-color: var(--fail); }
+
+  .rd-run {
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    line-height: 1.5;                 /* G3: no mono line-height token */
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+    background: var(--paper-dim);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: var(--space-3);
+  }
+
+  .rd-stage-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    color: var(--ink);
+    margin: 0 0 var(--space-2);
+    padding-bottom: var(--space-1);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rd-step {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding: var(--space-1) 0;
+    color: var(--ink-soft);
+  }
+
+  .rd-step-k { color: var(--ink); }
+
+  /* Every row is colored by the state it reports, at the body-size verdict
+     tier (C4b), cleared against this view's --paper-dim ground (C4c). A row
+     that has not run or never started keeps --ink-soft: those are absences
+     of a verdict, not verdicts (C5). The word is always present, so color
+     is a second channel, never the only one (R6). The static no-JS frames
+     use the class form of the same three rules. */
+  .rd-step[data-state="running"] .rd-step-v { color: var(--ink); }
+
+  .rd-step[data-state="pass"] .rd-step-v,
+  .rd-step--pass .rd-step-v { color: var(--pass-text); }
+
+  .rd-step[data-state="halt"] .rd-step-v,
+  .rd-step--halt .rd-step-v { color: var(--halt-text); }
+
+  .rd-step[data-state="fail"] .rd-step-v,
+  .rd-step--fail .rd-step-v { color: var(--fail-text); }
+
+  .rd-journal,
+  .rd-outcome {
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Artifact panel ------------------------------------------------------ */
+  .rd-artifact { display: flex; flex-direction: column; gap: var(--space-2); align-items: flex-start; }
+
+  .rd-panel {
+    background: var(--paper-dim);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: var(--space-3);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .rd-panel-label {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .rd-pre {
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .rd-status {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* Static / no-JS frames ---------------------------------------------- */
+  .rd-static { display: flex; flex-direction: column; gap: var(--space-4); }
+  .rd-frame-block { display: flex; flex-direction: column; gap: var(--space-2); }
+
+  .rd-js { display: none; }
+  .rd.rd-on .rd-js { display: flex; flex-direction: column; gap: var(--space-3); }
+  .rd.rd-on .rd-controls { flex-direction: row; }
+  .rd.rd-on .rd-static { display: none; }
+
+  [hidden] { display: none !important; }
+
+  @media (max-width: 620px) {
+    .rd-run { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('.rd');
+    if (!root) return;
+
+    var S = {
+      idle: 'not run',
+      running: 'running',
+      pass: 'pass',
+      halt: 'halt',
+      fail: 'fail',
+      skipped: 'never started',
+      prompt: 'Pick a scenario to run the line.',
+      show: 'Show the file',
+      hide: 'Hide the file',
+      feedLabel: 'The handoff file',
+      verdictLabel: 'The verdict',
+      stderrLabel: "The gate's error line",
+      completeLine: 'Run complete: every stage passed.',
+      haltedLine: 'Run halted at the step 2 gate.',
+      failedLine: 'Run failed at the step 2 verdict.',
+      journal: '→ run complete: all stages PASS'
+    };
+
+    var FEED = '{\n  "run_id": "r-0042",\n  "stage": "01_collect",\n  "collected_at": "2026-08-16",\n  "notes": "three documents read"\n}';
+    var STDERR = "required key missing: 'sources' in 01_collect/output/feed.json";
+    var VERDICT = '{"status": "fail", "reason": "The draft drops the sources the handoff supplied and cites none of them."}';
+
+    // A scenario is an ordered list of step outcomes plus its ending.
+    function steps(list) { return list; }
+    var SCENARIOS = {
+      '1': {
+        caption: 'Every step is gated before it starts and checked after it finishes. Nothing objects, so the run finishes.',
+        chip: 'PASS', chipClass: 'rd-chip--pass', outcome: S.completeLine, journal: S.journal,
+        artifact: null,
+        steps: steps([
+          ['1-gate', 'pass'], ['1-work', 'pass'], ['1-verdict', 'pass'],
+          ['2-gate', 'pass'], ['2-work', 'pass'], ['2-verdict', 'pass'],
+          ['3-gate', 'pass'], ['3-work', 'pass'], ['3-verdict', 'pass']
+        ])
+      },
+      '2': {
+        caption: 'The handoff into step 2 is missing a required key. The gate stops the run before step 2 does any work, so nothing after it runs.',
+        chip: 'HALT', chipClass: 'rd-chip--halt', outcome: S.haltedLine, journal: null,
+        artifact: { label: S.stderrLabel, body: STDERR + '\n\n' + S.feedLabel + '\n' + FEED, note: true },
+        steps: steps([
+          ['1-gate', 'pass'], ['1-work', 'pass'], ['1-verdict', 'pass'],
+          ['2-gate', 'halt'],
+          ['2-work', 'skipped'], ['2-verdict', 'skipped'],
+          ['3-gate', 'skipped'], ['3-work', 'skipped'], ['3-verdict', 'skipped']
+        ])
+      },
+      '3': {
+        caption: 'Step 2 runs and produces something. The checker reads it and judges it bad, so the run stops there and step 3 never starts.',
+        chip: 'FAIL', chipClass: 'rd-chip--fail', outcome: S.failedLine, journal: null,
+        artifact: { label: S.verdictLabel, body: VERDICT, note: false },
+        steps: steps([
+          ['1-gate', 'pass'], ['1-work', 'pass'], ['1-verdict', 'pass'],
+          ['2-gate', 'pass'], ['2-work', 'pass'], ['2-verdict', 'fail'],
+          ['3-gate', 'skipped'], ['3-work', 'skipped'], ['3-verdict', 'skipped']
+        ])
+      }
+    };
+
+    var q = function (sel) { return root.querySelector(sel); };
+    var chip = q('[data-chip]');
+    var prompt = q('.rd-prompt');
+    var journalEl = q('[data-journal]');
+    var outcomeEl = q('[data-outcome]');
+    var captionEl = q('[data-caption]');
+    var announceEl = q('[data-announce]');
+    var artifactEl = q('[data-artifact]');
+    var toggleEl = q('[data-toggle]');
+    var panelEl = q('[data-panel]');
+    var panelLabel = q('[data-panel-label]');
+    var panelBody = q('[data-panel-body]');
+    var panelNote = q('[data-panel-note]');
+    var runEl = q('[data-run]');
+    var skipEl = q('.rd-skip');
+    var buttons = root.querySelectorAll('.rd-btn');
+
+    var timer = null;
+    var current = null;
+
+    function stepEl(id) { return root.querySelector('[data-step="' + id + '"]'); }
+
+    function reset() {
+      if (timer) { clearTimeout(timer); timer = null; }
+      var all = root.querySelectorAll('.rd-live [data-step]');
+      for (var i = 0; i < all.length; i++) {
+        all[i].removeAttribute('data-state');
+        all[i].querySelector('.rd-step-v').textContent = S.idle;
+      }
+      chip.hidden = true;
+      chip.className = 'rd-chip';
+      chip.textContent = '';
+      journalEl.hidden = true; journalEl.textContent = '';
+      outcomeEl.hidden = true; outcomeEl.textContent = '';
+      captionEl.hidden = true; captionEl.textContent = '';
+      artifactEl.hidden = true;
+      panelEl.hidden = true;
+      panelNote.hidden = true;
+      toggleEl.setAttribute('aria-expanded', 'false');
+      toggleEl.textContent = S.show;
+      announceEl.textContent = '';
+      prompt.hidden = false;
+      skipEl.hidden = true;
+    }
+
+    function announce(text) { announceEl.textContent = text; }
+
+    function stageOf(id) { return id.charAt(0); }
+
+    function applyStep(pair, speak) {
+      var el = stepEl(pair[0]);
+      if (!el) return;
+      el.setAttribute('data-state', pair[1]);
+      el.querySelector('.rd-step-v').textContent = S[pair[1]];
+      if (!speak) return;
+      var n = stageOf(pair[0]);
+      if (pair[1] === 'pass' && pair[0].indexOf('verdict') > -1) announce('Stage ' + n + ': pass');
+      else if (pair[1] === 'halt') announce('Stage ' + n + ' gate: halt');
+      else if (pair[1] === 'fail') announce('Stage ' + n + ' verdict: fail');
+      else if (pair[1] === 'running') announce('Stage ' + n + ': running');
+    }
+
+    function finish(sc) {
+      chip.hidden = false;
+      chip.className = 'rd-chip ' + sc.chipClass;
+      chip.textContent = sc.chip;
+      if (sc.journal) { journalEl.hidden = false; journalEl.textContent = sc.journal; }
+      outcomeEl.hidden = false; outcomeEl.textContent = sc.outcome;
+      captionEl.hidden = false; captionEl.textContent = sc.caption;
+      if (sc.artifact) {
+        artifactEl.hidden = false;
+        panelLabel.textContent = sc.artifact.label;
+        panelBody.textContent = sc.artifact.body;
+        panelNote.hidden = !sc.artifact.note;
+      }
+      skipEl.hidden = true;
+      if (sc.chip === 'PASS') announce('Run complete: every stage passed.');
+      timer = null;
+    }
+
+    function renderAll(sc) {
+      for (var i = 0; i < sc.steps.length; i++) applyStep(sc.steps[i], false);
+      finish(sc);
+    }
+
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function run(key) {
+      reset();
+      current = key;
+      var sc = SCENARIOS[key];
+      prompt.hidden = true;
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-scenario') === key ? 'true' : 'false');
+      }
+      if (reduced) { renderAll(sc); return; }
+      skipEl.hidden = false;
+      var i2 = 0;
+      var settle = function () {
+        applyStep(sc.steps[i2], true);
+        i2++;
+        timer = setTimeout(tick, 520);
+      };
+      var tick = function () {
+        if (i2 >= sc.steps.length) { finish(sc); return; }
+        applyStep([sc.steps[i2][0], 'running'], false);
+        timer = setTimeout(settle, 520);
+      };
+      tick();
+    }
+
+    function skip() {
+      if (!current) return;
+      if (timer) { clearTimeout(timer); timer = null; }
+      renderAll(SCENARIOS[current]);
+    }
+
+    for (var b = 0; b < buttons.length; b++) {
+      buttons[b].setAttribute('aria-pressed', 'false');
+      buttons[b].addEventListener('click', function (e) {
+        run(e.currentTarget.getAttribute('data-scenario'));
+      });
+    }
+
+    skipEl.addEventListener('click', skip);
+    runEl.addEventListener('click', function () { if (timer) skip(); });
+
+    toggleEl.addEventListener('click', function () {
+      var open = toggleEl.getAttribute('aria-expanded') === 'true';
+      toggleEl.setAttribute('aria-expanded', open ? 'false' : 'true');
+      toggleEl.textContent = open ? S.show : S.hide;
+      panelEl.hidden = open;
+    });
+
+    reset();
+    root.classList.add('rd-on');
+  })();
+</script>

@@ -1,0 +1,69 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+const people = await getCollection("people");
+const founders = people.filter((p) => p.data.group === "founder").sort((a, b) => a.data.order - b.data.order);
+const mentors = people.filter((p) => p.data.group === "mentor").sort((a, b) => a.data.order - b.data.order);
+
+const founderContent = await Promise.all(founders.map((p) => render(p)));
+const mentorContent = await Promise.all(mentors.map((p) => render(p)));
+---
+<Base title="About" description="Who is behind no.fail.">
+  <section class="nf-section">
+    <div class="nf-content">
+      <h1>About</h1>
+      <p>
+        no.fail is a small shop. The person who scopes the work is the person who builds
+        it, and the people below are who you deal with.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Founder</h2>
+      {founders.map((person, i) => {
+        const { Content } = founderContent[i];
+        return (
+          <div class="nf-card">
+            {person.data.photo && (
+              <img
+                src={person.data.photo}
+                alt={person.data.name}
+                style={`max-width:${person.data.photoMaxWidth ?? 320}px;`}
+              />
+            )}
+            <h3>{person.data.name}</h3>
+            <p class="nf-meta">{person.data.role}</p>
+            <Content />
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Mentors</h2>
+      {mentors.map((person, i) => {
+        const { Content } = mentorContent[i];
+        return (
+          <div class="nf-card">
+            {person.data.photo && (
+              <img
+                src={person.data.photo}
+                alt={person.data.name}
+                style={`max-width:${person.data.photoMaxWidth ?? 200}px;`}
+              />
+            )}
+            <h3>{person.data.name}</h3>
+            <p class="nf-meta">{person.data.role}</p>
+            <Content />
+            {person.data.link && <p><a class="nf-link" href={person.data.link}>{person.data.link}</a></p>}
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</Base>

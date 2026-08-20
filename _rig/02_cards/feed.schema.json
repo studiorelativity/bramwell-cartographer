@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "02_cards feed",
+  "type": "object",
+  "required": ["territory_commit", "edge_list", "catalog_path", "card_index", "cards_dir", "card_count"],
+  "properties": {
+    "territory_commit": { "type": "string", "minLength": 7, "default": "0000000" },
+    "edge_list": {
+      "type": "string", "minLength": 1,
+      "description": "Forwarded from 01_inventory: 03_verify graph-matches every Hits line against it.",
+      "default": "01_inventory/output/raw/edges.json"
+    },
+    "catalog_path": { "type": "string", "minLength": 1, "default": "02_cards/output/catalog.md" },
+    "card_index": {
+      "type": "string", "minLength": 1,
+      "description": "The manifest the card set hands off by — never the directory.",
+      "default": "02_cards/output/card-index.json"
+    },
+    "cards_dir": {
+      "type": "string", "minLength": 1,
+      "description": "Directory argument for bin/cite-check.sh. Carried as a plain key: a directory is never a path_key.",
+      "default": "02_cards/output/cards"
+    },
+    "card_count": { "type": "integer", "minimum": 8, "maximum": 12, "default": 8 }
+  }
+}

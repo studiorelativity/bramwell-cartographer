@@ -1,0 +1,117 @@
+{
+  "territory_commit": "86aa09a",
+  "file_list": "01_inventory/output/raw/files.json",
+  "edge_list": "01_inventory/output/raw/edges.json",
+  "leftovers_found": 0,
+  "ghosts_found": 0,
+  "nouns": [
+    {
+      "noun": "Global Stylesheet",
+      "slug": "global-stylesheet",
+      "path": "src/styles/global.css",
+      "class": "token-style",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "The single source for design tokens, typography, and color that every page inherits through Base.astro, making it the highest-leverage file to understand before touching site visuals."
+    },
+    {
+      "noun": "Base Layout",
+      "slug": "base-layout",
+      "path": "src/layouts/Base.astro",
+      "class": "layout-spine",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 11,
+      "why_selected": "Every page in the territory passes through this layout (11 inbound edges, the highest count found), making it the structural spine a next developer must understand first."
+    },
+    {
+      "noun": "Nav",
+      "slug": "nav",
+      "path": "src/components/Nav.astro",
+      "class": "component",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "Rendered by Base.astro and therefore present on every page despite a single direct inbound edge, making it load-bearing site-wide navigation."
+    },
+    {
+      "noun": "Footer",
+      "slug": "footer",
+      "path": "src/components/Footer.astro",
+      "class": "component",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "Rendered by Base.astro on every page alongside Nav, making it the site-wide footer despite a single direct inbound edge."
+    },
+    {
+      "noun": "Contact Form",
+      "slug": "contact-form",
+      "path": "src/components/ContactForm.astro",
+      "class": "component",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "At 263 lines it is the largest single-purpose component in the territory and drives the site's primary conversion path on /contact."
+    },
+    {
+      "noun": "Rig Demo",
+      "slug": "rig-demo",
+      "path": "src/components/RigDemo.astro",
+      "class": "component",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 1,
+      "why_selected": "At 552 lines it is the largest file in the entire territory and renders the flagship interactive demo on the homepage, the site's centerpiece."
+    },
+    {
+      "noun": "Content Collections Schema",
+      "slug": "content-collections-schema",
+      "path": "src/content.config.ts",
+      "class": "content-collection",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 6,
+      "why_selected": "Defines the writing, work, and people collections queried by six different pages via getCollection, making it the single file a developer must edit to change any collection's shape."
+    },
+    {
+      "noun": "Astro Config",
+      "slug": "astro-config",
+      "path": "astro.config.mjs",
+      "class": "site-config",
+      "status": "live",
+      "liveness": "contract",
+      "contract_id": "toolchain-manifest",
+      "inbound_edges": 0,
+      "why_selected": "Matches the toolchain-manifest contract: nothing in the source imports it, but the build toolchain reads it by name for integrations and output settings."
+    },
+    {
+      "noun": "Contact API Function",
+      "slug": "contact-api-function",
+      "path": "functions/api/contact.js",
+      "class": "serverless-function",
+      "status": "live",
+      "liveness": "contract",
+      "contract_id": "pages-functions",
+      "inbound_edges": 0,
+      "why_selected": "Matches the pages-functions contract: invoked by Cloudflare Pages file-based function routing rather than any static import, and is the serverless counterpart to the Contact Form's submission."
+    },
+    {
+      "noun": "Self-hosted Web Fonts",
+      "slug": "self-hosted-web-fonts",
+      "path": "public/fonts/archivo-800.woff2",
+      "class": "public-asset",
+      "status": "live",
+      "liveness": "edge",
+      "inbound_edges": 2,
+      "why_selected": "Represents the eight self-hosted woff2 files (archivo x3, inter x3, jetbrains-mono x2) referenced via @font-face in global.css; archivo-800 alone carries 2 of the group's 9 combined inbound edges, and self-hosting this many weights is the surprising choice worth one grouped card."
+    }
+  ],
+  "collisions": [
+    {
+      "word": "config",
+      "meanings": ["astro.config.mjs", "src/content.config.ts"]
+    }
+  ]
+}

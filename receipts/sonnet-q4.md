@@ -1,0 +1,2 @@
+The card tells me the people collection is defined in `src/content.config.ts` and read by `src/pages/about.astro`. However, it doesn't describe the photo field or what the problem is. The card cannot answer which specific file has the photo issue or whether a photo field is even allowed in the schema—I'd need to read the actual schema to see if `photo` is a declared field. **Read: content-config.md.**
+model: claude-haiku-4-5

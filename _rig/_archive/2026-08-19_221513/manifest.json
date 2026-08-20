@@ -1,0 +1,18 @@
+{
+  "archived_by": "2026-08-19_221513",
+  "archived_at": "2026-08-20T03:15:13Z",
+  "stages": {
+    "01_inventory": {
+      "producing_run_id": "2026-08-19_211434",
+      "cause": "closure:_config/territory.md"
+    },
+    "02_cards": {
+      "producing_run_id": "2026-08-19_211434",
+      "cause": "closure:_config/territory.md"
+    },
+    "03_verify": {
+      "producing_run_id": "2026-08-19_211434",
+      "cause": "closure:_config/territory.md"
+    }
+  }
+}

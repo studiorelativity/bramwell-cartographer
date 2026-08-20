@@ -1,0 +1,158 @@
+[
+	{
+		"path": "astro.config.mjs",
+		"lines": 8
+	},
+	{
+		"path": "functions/api/contact.js",
+		"lines": 213
+	},
+	{
+		"path": "package.json",
+		"lines": 16
+	},
+	{
+		"path": "public/favicon.svg",
+		"lines": 9
+	},
+	{
+		"path": "public/fonts/archivo-600.woff2",
+		"lines": 48
+	},
+	{
+		"path": "public/fonts/archivo-700.woff2",
+		"lines": 72
+	},
+	{
+		"path": "public/fonts/archivo-800.woff2",
+		"lines": 61
+	},
+	{
+		"path": "public/fonts/inter-400.woff2",
+		"lines": 80
+	},
+	{
+		"path": "public/fonts/inter-500.woff2",
+		"lines": 92
+	},
+	{
+		"path": "public/fonts/inter-600.woff2",
+		"lines": 95
+	},
+	{
+		"path": "public/fonts/jetbrains-mono-400.woff2",
+		"lines": 78
+	},
+	{
+		"path": "public/fonts/jetbrains-mono-700.woff2",
+		"lines": 96
+	},
+	{
+		"path": "public/images/doug.jpg",
+		"lines": 102
+	},
+	{
+		"path": "public/robots.txt",
+		"lines": 4
+	},
+	{
+		"path": "src/components/ContactForm.astro",
+		"lines": 263
+	},
+	{
+		"path": "src/components/Footer.astro",
+		"lines": 32
+	},
+	{
+		"path": "src/components/Nav.astro",
+		"lines": 32
+	},
+	{
+		"path": "src/components/RigDemo.astro",
+		"lines": 552
+	},
+	{
+		"path": "src/content.config.ts",
+		"lines": 42
+	},
+	{
+		"path": "src/content/people/doug-garnes.md",
+		"lines": 15
+	},
+	{
+		"path": "src/content/people/tony-yates.md",
+		"lines": 16
+	},
+	{
+		"path": "src/content/work/nofail-jidoka.md",
+		"lines": 34
+	},
+	{
+		"path": "src/content/writing/halt-is-not-fail.md",
+		"lines": 61
+	},
+	{
+		"path": "src/content/writing/jidoka-for-ai-pipelines.md",
+		"lines": 80
+	},
+	{
+		"path": "src/content/writing/runtime-isolated-gates.md",
+		"lines": 79
+	},
+	{
+		"path": "src/layouts/Base.astro",
+		"lines": 37
+	},
+	{
+		"path": "src/pages/about.astro",
+		"lines": 69
+	},
+	{
+		"path": "src/pages/contact.astro",
+		"lines": 52
+	},
+	{
+		"path": "src/pages/contact/error.astro",
+		"lines": 20
+	},
+	{
+		"path": "src/pages/contact/sent.astro",
+		"lines": 17
+	},
+	{
+		"path": "src/pages/how-it-works.astro",
+		"lines": 142
+	},
+	{
+		"path": "src/pages/index.astro",
+		"lines": 108
+	},
+	{
+		"path": "src/pages/privacy.astro",
+		"lines": 22
+	},
+	{
+		"path": "src/pages/rss.xml.js",
+		"lines": 19
+	},
+	{
+		"path": "src/pages/work/[...slug].astro",
+		"lines": 28
+	},
+	{
+		"path": "src/pages/work/index.astro",
+		"lines": 33
+	},
+	{
+		"path": "src/pages/writing/[...slug].astro",
+		"lines": 24
+	},
+	{
+		"path": "src/pages/writing/index.astro",
+		"lines": 47
+	},
+	{
+		"path": "src/styles/global.css",
+		"lines": 379
+	}
+]

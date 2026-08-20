@@ -1,0 +1,8 @@
+{
+  "territory_commit": "86aa09a",
+  "edge_list": "01_inventory/output/raw/edges.json",
+  "catalog_path": "02_cards/output/catalog.md",
+  "card_index": "02_cards/output/card-index.json",
+  "cards_dir": "02_cards/output/cards",
+  "card_count": 10
+}

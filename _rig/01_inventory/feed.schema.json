@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "01_inventory feed",
+  "type": "object",
+  "required": [
+    "territory_commit", "file_list", "edge_list",
+    "nouns", "collisions", "leftovers_found", "ghosts_found"
+  ],
+  "properties": {
+    "territory_commit": {
+      "type": "string", "minLength": 7,
+      "description": "First 7 characters of the pinned hash; the commit half of every citation.",
+      "default": "0000000"
+    },
+    "file_list": {
+      "type": "string", "minLength": 1,
+      "description": "Rig-root-relative path to files.json as bin/scan.sh wrote it.",
+      "default": "01_inventory/output/raw/files.json"
+    },
+    "edge_list": {
+      "type": "string", "minLength": 1,
+      "description": "Rig-root-relative path to edges.json as bin/scan.sh wrote it.",
+      "default": "01_inventory/output/raw/edges.json"
+    },
+    "leftovers_found": { "type": "integer", "minimum": 0, "default": 0 },
+    "ghosts_found": { "type": "integer", "minimum": 0, "default": 0 },
+    "nouns": {
+      "type": "array", "minItems": 8, "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["noun", "slug", "path", "class", "status", "inbound_edges", "why_selected"],
+        "properties": {
+          "noun": { "type": "string", "minLength": 1, "default": "Base" },
+          "slug": { "type": "string", "minLength": 1, "default": "base-layout" },
+          "path": { "type": "string", "minLength": 1, "default": "src/layouts/Base.astro" },
+          "class": {
+            "type": "string",
+            "enum": ["token-style", "layout-spine", "component",
+                     "content-collection", "site-config",
+                     "serverless-function", "public-asset"]
+          },
+          "status": { "type": "string", "enum": ["live", "leftover", "ghost"] },
+          "liveness": {
+            "description": "Which evidence class makes this noun live. Present on live nouns only; omitted otherwise, per the card contract.",
+            "type": ["string", "null"],
+            "enum": ["edge", "contract", null]
+          },
+          "contract_id": {
+            "description": "The contract from the closed list in noun-guidance.md that consumes this file. Present iff liveness is 'contract'. The closed list is noun-guidance.md's; it is not restated here, so it cannot drift from it.",
+            "type": ["string", "null"],
+            "default": null
+          },
+          "inbound_edges": { "type": "integer", "minimum": 0, "default": 1 },
+          "why_selected": { "type": "string", "minLength": 1, "default": "mock selection rationale" }
+        }
+      }
+    },
+    "collisions": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "required": ["word", "meanings"],
+        "properties": {
+          "word": { "type": "string", "minLength": 1, "default": "config" },
+          "meanings": {
+            "type": "array", "minItems": 2,
+            "items": { "type": "string", "minLength": 1, "default": "src/content.config.ts" }
+          }
+        }
+      }
+    }
+  }
+}

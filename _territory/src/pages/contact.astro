@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+import ContactForm from "../components/ContactForm.astro";
+---
+<Base
+  title="Contact"
+  description="Tell us what your team does by hand that it shouldn't. If we can't help you, you don't pay."
+>
+  <section class="nf-section">
+    <div class="nf-content">
+      <h1>Start here</h1>
+      <p>
+        Tell us what your team does by hand that it shouldn't. The messy one is usually
+        the right one — the process everyone already knows should be automated and
+        nobody has had time to take apart.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Terms</h2>
+      <p>
+        Discovery is a $1,000 working session, non-refundable, credited against your
+        invoice if you engage. It ends with a written findings memo: what we'd automate
+        first, where your process splits into stages, what we'd verify, roughly what it
+        costs. It exists to filter people shopping for a silver bullet.
+      </p>
+      <p>If we can't help you, you don't pay.</p>
+      <p>
+        Done-for-you: we build it, we hand it over, and your team is walked into the
+        system by a person rather than a login and a document.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Who reads this</h2>
+      <p>
+        Every message sent to no.fail is read by a person, and the reply comes from a
+        person. Nothing here is automated.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <ContactForm />
+    </div>
+  </section>
+</Base>

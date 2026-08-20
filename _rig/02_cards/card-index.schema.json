@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "card-index.json — the manifest the card set hands off by",
+  "type": "object",
+  "required": ["territory_commit", "catalog", "cards"],
+  "properties": {
+    "territory_commit": { "type": "string", "minLength": 7, "default": "0000000" },
+    "catalog": { "type": "string", "minLength": 1, "default": "catalog.md" },
+    "cards": {
+      "type": "array", "minItems": 8, "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["noun", "slug", "path", "status", "file", "hits", "does_not_hit"],
+        "properties": {
+          "noun": { "type": "string", "minLength": 1, "default": "Base" },
+          "slug": { "type": "string", "minLength": 1, "default": "base-layout" },
+          "path": { "type": "string", "minLength": 1, "default": "src/layouts/Base.astro" },
+          "status": { "type": "string", "enum": ["live", "leftover", "ghost"] },
+          "file": { "type": "string", "minLength": 1, "default": "cards/base-layout.md" },
+          "hits": { "type": "integer", "minimum": 0, "default": 0 },
+          "does_not_hit": { "type": "integer", "minimum": 0, "default": 0 }
+        }
+      }
+    }
+  }
+}

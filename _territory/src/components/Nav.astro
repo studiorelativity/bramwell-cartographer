@@ -1,0 +1,32 @@
+---
+// Nav.astro — primary navigation. Labels and hrefs come from the upstream
+// feed's `nav` array (03_components/output/feed.json), consumed verbatim.
+// This is the ONE instance of the lockup on the page that animates (M2).
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "How it works", href: "/how-it-works/" },
+  { label: "Writing", href: "/writing/" },
+  { label: "Work", href: "/work/" },
+  { label: "About", href: "/about/" },
+  { label: "Contact", href: "/contact/" },
+];
+
+const { currentPath } = Astro.props;
+---
+<header class="nf-nav">
+  <a class="nf-logo" href="/" aria-label="no.fail">
+    <span aria-hidden="true">no<span class="nf-dot">.</span>fail</span>
+    <span class="nf-cursor" aria-hidden="true"></span>
+  </a>
+  <nav aria-label="Primary">
+    <ul class="nf-nav-links">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

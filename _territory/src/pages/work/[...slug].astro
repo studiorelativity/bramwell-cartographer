@@ -1,0 +1,28 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("work");
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug ?? entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<Base title={entry.data.title} description={entry.data.summary}>
+  <article class="nf-section">
+    <div class="nf-content">
+      <p class="nf-meta">{entry.data.caption ?? entry.data.status}</p>
+      <h1>{entry.data.title}</h1>
+      <p><strong>Status:</strong> {entry.data.status}</p>
+      <p><strong>Summary:</strong> {entry.data.summary}</p>
+      <p><strong>Stack:</strong> {entry.data.stack}</p>
+      {entry.data.url && <p><a class="nf-link" href={entry.data.url}>{entry.data.url}</a></p>}
+      <Content />
+    </div>
+  </article>
+</Base>

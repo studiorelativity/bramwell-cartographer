@@ -1,0 +1,33 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const entries = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Work" description="One system mid-build, with its decisions on display.">
+  <section class="nf-section">
+    <div class="nf-content">
+      <h1>Work</h1>
+      <p>
+        One entry, on purpose: a system still being built, with its decisions on
+        display. You can see how the work is cut and what was verified along the way.
+        When there is a second, it will be here.
+      </p>
+    </div>
+  </section>
+
+  <section class="nf-section">
+    <div class="nf-content">
+      <h2>Entries</h2>
+      <ul class="nf-list">
+        {entries.map((entry) => (
+          <li class="nf-card">
+            <h3><a href={`/work/${entry.data.slug ?? entry.id}/`}>{entry.data.title}</a></h3>
+            <p>{entry.data.summary}</p>
+            <p class="nf-meta">{entry.data.caption ?? entry.data.status}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

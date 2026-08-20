@@ -1,0 +1,263 @@
+---
+// ContactForm.astro — the contact form markup and its progressive enhancement.
+// Contract: _config/cloudflare.md. Tokens: _config/design-system.md.
+//
+// Every visitor-facing string is consumed verbatim from the copy manifest
+// (02_copy/output/copy/manifest.json § form_strings and § form_states). No
+// string in this file was written here. Gaps: output/raw/gaps.md.
+//
+// The form works fully with JavaScript disabled: it is a plain POST to
+// /api/contact, which redirects to the built routes /contact/sent/ and
+// /contact/error/. The script at the bottom is pure enhancement — delete it
+// and the form still works end to end.
+
+// form_strings
+const formPrompt = "Tell us what your team does by hand that it shouldn't.";
+const labelName = "Your name";
+const labelEmail = "Email";
+const labelCompany = "Company (optional)";
+const labelMessage = "What your team does by hand";
+const submitLabel = "Send";
+const labelHoneypot = "Leave this blank";
+
+// form_states — the same notes the built routes /contact/sent/ and
+// /contact/error/ render; the enhanced path shows them inline instead of
+// navigating.
+const stateSent =
+  "Your message reached us. A person reads it, and the reply comes from a person.";
+const stateError =
+  "That message didn't send. Nothing reached us, so it is worth sending again — the form is one link away and your details are still yours to re-enter.";
+---
+
+<div class="cf">
+  <p class="cf-prompt">{formPrompt}</p>
+
+  <form class="cf-form" method="post" action="/api/contact" data-contact-form>
+    <div class="cf-field">
+      <label class="cf-label" for="cf-name">{labelName}</label>
+      <input
+        class="cf-input"
+        id="cf-name"
+        name="name"
+        type="text"
+        required
+        maxlength="200"
+        autocomplete="name"
+      />
+    </div>
+
+    <div class="cf-field">
+      <label class="cf-label" for="cf-email">{labelEmail}</label>
+      <input
+        class="cf-input"
+        id="cf-email"
+        name="email"
+        type="email"
+        required
+        maxlength="254"
+        autocomplete="email"
+      />
+    </div>
+
+    <div class="cf-field">
+      <label class="cf-label" for="cf-company">{labelCompany}</label>
+      <input
+        class="cf-input"
+        id="cf-company"
+        name="company"
+        type="text"
+        maxlength="200"
+        autocomplete="organization"
+      />
+    </div>
+
+    <div class="cf-field">
+      <label class="cf-label" for="cf-message">{labelMessage}</label>
+      <textarea
+        class="cf-input cf-textarea"
+        id="cf-message"
+        name="message"
+        required
+        minlength="10"
+        maxlength="5000"
+        rows="8"></textarea>
+    </div>
+
+    <!-- Honeypot: hidden from sight, reachable and labelled for screen
+         readers, never autofilled. A filled value is answered as success
+         with no mail sent. -->
+    <div class="cf-hp" aria-hidden="false">
+      <label class="cf-label" for="cf-website">{labelHoneypot}</label>
+      <input
+        class="cf-input"
+        id="cf-website"
+        name="website"
+        type="text"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </div>
+
+    <button class="cf-submit" type="submit">{submitLabel}</button>
+
+    <!-- Enhanced path only: empty and hidden until the script fills it. -->
+    <p class="cf-status" data-contact-status role="status" aria-live="polite" hidden></p>
+  </form>
+</div>
+
+<style>
+  .cf {
+    font-family: var(--font-body);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 42rem;
+  }
+
+  .cf-prompt {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .cf-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .cf-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .cf-label {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    color: var(--ink-soft);
+  }
+
+  .cf-input {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 2px;              /* G1: design file states 2px, names no token */
+    padding: var(--space-2);
+    width: 100%;
+  }
+
+  .cf-textarea {
+    line-height: 1.6;
+    resize: vertical;
+  }
+
+  .cf-input:focus-visible,
+  .cf-submit:focus-visible {
+    outline: 2px solid var(--accent-deep);   /* G2: width/offset untokenized */
+    outline-offset: 2px;
+  }
+
+  .cf-submit {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    color: var(--paper);
+    background: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    align-self: flex-start;
+  }
+
+  .cf-submit:hover {
+    border-color: var(--accent-deep);
+    background: var(--accent-deep);
+  }
+
+  /* Honeypot: off-screen rather than display:none, so assistive technology
+     still reaches the labelled field while no sighted visitor sees it. */
+  .cf-hp {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .cf-status {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cf-status[data-state="sent"] { color: var(--ink); }
+  .cf-status[data-state="error"] { color: var(--halt); }  /* C1 exception: short verdict text */
+</style>
+
+<script is:inline define:vars={{ stateSent, stateError }}>
+  // Progressive enhancement, second and last piece of client JS on the site.
+  // No dependencies. Removing this block leaves a fully working form: the
+  // plain POST and the two built routes carry the whole flow without it.
+  (function () {
+    var form = document.querySelector("[data-contact-form]");
+    if (!form) return;
+    var status = form.querySelector("[data-contact-status]");
+    var submit = form.querySelector(".cf-submit");
+
+    form.addEventListener("submit", function (event) {
+      if (!form.reportValidity()) return;
+      event.preventDefault();
+
+      var data = new FormData(form);
+      var payload = {
+        name: String(data.get("name") || ""),
+        email: String(data.get("email") || ""),
+        company: String(data.get("company") || ""),
+        message: String(data.get("message") || ""),
+        website: String(data.get("website") || ""),
+      };
+
+      // No in-flight string exists in the copy manifest (gap G8), so the
+      // button is disabled and no wording is invented for the wait.
+      if (submit) submit.disabled = true;
+
+      fetch(form.getAttribute("action"), {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then(function (response) {
+          return response.json().catch(function () { return { ok: false }; });
+        })
+        .then(function (body) {
+          if (body && body.ok) {
+            show("sent", stateSent);
+            form.reset();
+          } else {
+            show("error", stateError);
+          }
+        })
+        .catch(function () {
+          show("error", stateError);
+        })
+        .then(function () {
+          if (submit) submit.disabled = false;
+        });
+    });
+
+    function show(state, text) {
+      if (!status) return;
+      status.textContent = text;   // textContent, never innerHTML
+      status.setAttribute("data-state", state);
+      status.hidden = false;
+    }
+  })();
+</script>

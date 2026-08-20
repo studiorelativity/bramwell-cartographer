@@ -1,0 +1,379 @@
+/* global.css — the only file in this site where a colour may be a hex
+   literal. Every literal below is a token definition transcribed from
+   _config/design-system.md. Every other file references these custom
+   properties and never writes a raw colour value. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/archivo-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/archivo-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/archivo-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/jetbrains-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/jetbrains-mono-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Inks and grounds */
+  --ink:        #111110;   /* near-black; dark surfaces and body text  */
+  --paper:      #FFFFFF;   /* page ground                              */
+  --paper-dim:  #F4F3F1;   /* card/section ground, subtle              */
+  --line:       #D8D6D2;   /* hairlines, borders                       */
+  --ink-soft:   #55534E;   /* secondary text on paper (7.3:1)          */
+
+  /* Brand accent — pumpkin, three steps */
+  --accent:      #FF7518;  /* dark surfaces; light-ground display >=28px */
+  --accent-deep: #D95A06;  /* large text and UI accents on paper (4.3:1)*/
+  --accent-text: #B04905;  /* paragraph-size accent text on paper (5.3:1)*/
+
+  /* Verdict triad (the palette IS the verdict system) */
+  --pass:       #00E34A;   /* dark surfaces only (12:1 on ink)         */
+  --pass-deep:  #00A836;   /* pass on paper: large text / UI only      */
+  --halt:       #C2560F;   /* legal as body text on paper (4.5:1)      */
+  --fail:       #EC3013;   /* large text / UI on paper; body on dark   */
+
+  /* Verdict triad, paper body-size tier (C4b). Cleared against
+     --paper-dim, the darker paper ground, per C4c. */
+  --pass-text:  #007A28;   /* 4.96:1 on --paper-dim, 5.51:1 on --paper */
+  --halt-text:  #A8480B;   /* 5.27:1 on --paper-dim, 5.84:1 on --paper */
+  --fail-text:  #BE3411;   /* 5.13:1 on --paper-dim, 5.69:1 on --paper */
+
+  /* Dark surfaces — tokenized, currently unconsumed (design-system.md) */
+  --band:             #1F1E1C;
+  --ink-on-dark:      #EDEBE8;
+  --ink-dim-on-dark:  #C9C6C1;
+  --line-on-dark:     #3A3835;
+  --panel-on-dark:    #2A2926;
+  --fail-on-dark:     #FF6A4D;
+  --halt-on-dark:     #E8923F;
+  --band-edge: 2rem;
+
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --text-hero:  clamp(2.5rem, 6vw, 4.5rem);
+  --text-h2:    2rem;
+  --text-h3:    1.375rem;
+  --text-body:  1.0625rem;
+  --text-small: 0.875rem;
+  --text-mono:  0.9375rem;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --space-8: 8rem;
+
+  --rule-width:      62rem;
+  --rule-fade-start: 16%;
+  --rule-fade-end:   84%;
+  --rule-height:     1px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0 0 var(--space-3);
+}
+
+h1 { font-size: var(--text-hero); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: var(--text-h2); font-weight: 700; }
+h3 { font-size: var(--text-h3); font-weight: 600; }
+
+p { margin: 0 0 var(--space-3); }
+
+.nf-content {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.nf-content--wide {
+  max-width: 62rem;
+}
+
+.nf-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.nf-section {
+  position: relative;
+  padding: var(--space-7) 0;
+}
+
+.nf-section + .nf-section {
+  /* S1-S3: fading hairline rule, painted with a gradient, never a border */
+}
+
+.nf-section:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, var(--rule-width));
+  height: var(--rule-height);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--line) var(--rule-fade-start),
+    var(--line) var(--rule-fade-end),
+    transparent 100%
+  );
+}
+
+@media (max-width: 720px) {
+  .nf-section { padding: var(--space-5) 0; }
+}
+
+.nf-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Site chrome: nav ------------------------------------------------------ */
+.nf-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  /* Full-bleed hairline, contents held to the same 62rem shell as the
+     section rules, so the chrome shares the body's centre axis. */
+  padding: var(--space-3) max(var(--space-4), (100% - var(--rule-width)) / 2);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.nf-nav-links {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-small);
+}
+
+.nf-nav-links a {
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.nf-nav-links a:hover,
+.nf-nav-links a:focus-visible {
+  color: var(--accent-text);
+}
+
+.nf-nav-links a[aria-current="page"] {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+/* Site chrome: footer ---------------------------------------------------- */
+.nf-footer {
+  border-top: 1px solid var(--line);
+  padding: var(--space-5) max(var(--space-4), (100% - var(--rule-width)) / 2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.nf-footer-links {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-small);
+}
+
+.nf-footer-links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.nf-footer-links a:hover,
+.nf-footer-links a:focus-visible {
+  color: var(--accent-text);
+}
+
+.nf-footer-verified,
+.nf-footer-copyright {
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* The logo lockup -------------------------------------------------------- */
+.nf-logo {
+  display: inline-flex;
+  align-items: flex-end;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;          /* the only knob — everything else is em */
+  letter-spacing: -0.018em;
+  line-height: 0.9;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nf-dot    { color: var(--accent-deep); }
+.nf-cursor {
+  width: 0.5em;
+  height: 0.12em;
+  margin-left: 0.22em;
+  margin-bottom: 0.08em;
+  background: var(--accent-deep);
+  animation: nf-blink 1.1s steps(1) infinite;
+}
+/* >=28px on light, or any size on ink: full-strength pumpkin */
+.nf-logo--display .nf-dot,
+.nf-logo--on-ink  .nf-dot    { color: var(--accent); }
+.nf-logo--display .nf-cursor,
+.nf-logo--on-ink  .nf-cursor { background: var(--accent); }
+.nf-logo--display { font-size: 48px; }
+.nf-logo--on-ink  { color: #fff; }
+
+/* M2: exactly one blinking cursor per page — the nav instance. Every other
+   instance renders its cursor static, at full opacity, by this explicit
+   modifier class. */
+.nf-logo--static .nf-cursor {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes nf-blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+@media (prefers-reduced-motion: reduce) { .nf-cursor { animation: none } }
+
+/* Buttons / links --------------------------------------------------------- */
+.nf-btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--paper);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: var(--space-2) var(--space-3);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nf-btn:hover,
+.nf-btn:focus-visible {
+  border-color: var(--accent-deep);
+  background: var(--accent-deep);
+}
+
+.nf-link {
+  color: var(--accent-text);
+}
+
+/* Cards / lists ------------------------------------------------------------ */
+.nf-card {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: var(--space-4);
+  background: var(--paper-dim);
+}
+
+.nf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.nf-meta {
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--text-small);
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  vertical-align: top;
+}
