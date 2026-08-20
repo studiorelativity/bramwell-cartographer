@@ -84,6 +84,42 @@ the affected stages re-ran, and the next run passed:
 The full journal — including that failure, its fix, and the receipts
 showing untouched stages were not re-paid — is in `_rig/log/`.
 
+## What actually happened here
+
+This repo is the record of one evening's build, kept honestly. Five
+things went wrong; the system caught four of them, and the fifth is
+disclosed. In order:
+
+1. **A citation parser truncated bracket filenames** (`[...slug].astro`
+   became `.astro`), and two truncated citations collapsed into one
+   under dedup — so the check failed closed but pointed at the wrong
+   cause. Fixed in the scanner; the near-miss is why the count is
+   audited, not just the failures.
+2. **The map called a live file dead.** `content.config.ts` had zero
+   inbound edges — Astro loads it by convention, not import — and the
+   adjudicator, refusing to assert without evidence, badged it
+   leftover. The fix went to the evidence layer (contract-based
+   liveness, `reference/card-contract.md`), not to the rule. The wrong
+   verdict is preserved in `_rig/_archive/`.
+3. **Two citations resolved but misled** — pointing one and two lines
+   from the content they claimed. Every mechanical check passed; the
+   verifier failed the map (`_rig/log/run-report.md`, run
+   2026-08-19_221513). One instruction changed; no card was hand-edited;
+   the re-run shows untouched stages were not re-paid.
+4. **A cold reader invented an enum.** Asked the schema question, the
+   small model fused a real token from the adjacent collection with a
+   plausible partner into values that do not exist. The transcript
+   ships as produced; the card's citation is what makes the invention
+   checkable in seconds (`receipts/NOTE.md`).
+5. **One real defect escaped everything:** an image referenced from
+   markdown frontmatter — outside every evidence class — was missing
+   from the territory. A human caught it from the map's own file
+   inventory. That boundary is now stated wherever this map makes a
+   claim.
+
+A map is trustworthy in proportion to what its process catches and what
+its process admits. This is the full list.
+
 ## Try the walk yourself
 
 `receipts/` holds unedited transcripts of cold sessions — no memory, no
